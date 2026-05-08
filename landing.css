@@ -304,14 +304,6 @@ html {
   transition: transform .2s, box-shadow .2s, border-color .2s;
   overflow: hidden;
 }
-.lp-track::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: .4rem;
-  background: var(--primary);
-  opacity: .8;
-}
 .lp-track:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px -12px rgba(var(--primary-rgb), .25);
