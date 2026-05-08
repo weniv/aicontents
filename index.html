@@ -611,10 +611,12 @@
   <!-- =============== HERO 3D SCENE — 작은 별의 어린 왕자 =============== -->
   <script type="module">
     import * as THREE from 'three';
-    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-    import printTree from './threejs/src/mesh/tree.js';
-    import printTangerine from './threejs/src/mesh/tangerine.js';
-    import printStone from './threejs/src/mesh/stone.js';
+    import {
+      makePalmTree,
+      makeTangerine,
+      makeDolharubang,
+      loadLycat,
+    } from './style/3d/index.js';
 
     const canvas = document.querySelector('#hero-canvas');
     if (!canvas) { /* no-op */ } else {
@@ -750,33 +752,29 @@
       }
 
       // 야자수 5그루 (행성 곳곳에 산재)
-      planet.add(mountToPlanet(printTree(), { lat: 62,  lng: 35,   targetSize: 0.475, sink: 0.03 }));
-      planet.add(mountToPlanet(printTree(), { lat: 118, lng: 200,  targetSize: 0.425, sink: 0.03, yaw: 40 }));
-      planet.add(mountToPlanet(printTree(), { lat: 50,  lng: -150, targetSize: 0.45,  sink: 0.03, yaw: -20 }));
-      planet.add(mountToPlanet(printTree(), { lat: 95,  lng: 250,  targetSize: 0.40,  sink: 0.03, yaw: 60 }));
-      planet.add(mountToPlanet(printTree(), { lat: 145, lng: 60,   targetSize: 0.46,  sink: 0.03, yaw: 110 }));
+      planet.add(mountToPlanet(makePalmTree(), { lat: 62,  lng: 35,   targetSize: 0.475, sink: 0.03 }));
+      planet.add(mountToPlanet(makePalmTree(), { lat: 118, lng: 200,  targetSize: 0.425, sink: 0.03, yaw: 40 }));
+      planet.add(mountToPlanet(makePalmTree(), { lat: 50,  lng: -150, targetSize: 0.45,  sink: 0.03, yaw: -20 }));
+      planet.add(mountToPlanet(makePalmTree(), { lat: 95,  lng: 250,  targetSize: 0.40,  sink: 0.03, yaw: 60 }));
+      planet.add(mountToPlanet(makePalmTree(), { lat: 145, lng: 60,   targetSize: 0.46,  sink: 0.03, yaw: 110 }));
 
       // 감귤(한라봉) 8개 — 야자수 사이사이에 작게 흩뿌리기
-      planet.add(mountToPlanet(printTangerine(), { lat: 45,  lng: 150,  targetSize: 0.16, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 130, lng: 80,   targetSize: 0.14, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 95,  lng: 280,  targetSize: 0.15, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 30,  lng: -50,  targetSize: 0.13, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 60,  lng: 320,  targetSize: 0.15, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 110, lng: 180,  targetSize: 0.14, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 150, lng: 10,   targetSize: 0.16, sink: 0.01 }));
-      planet.add(mountToPlanet(printTangerine(), { lat: 35,  lng: 220,  targetSize: 0.13, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 45,  lng: 150,  targetSize: 0.16, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 130, lng: 80,   targetSize: 0.14, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 95,  lng: 280,  targetSize: 0.15, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 30,  lng: -50,  targetSize: 0.13, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 60,  lng: 320,  targetSize: 0.15, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 110, lng: 180,  targetSize: 0.14, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 150, lng: 10,   targetSize: 0.16, sink: 0.01 }));
+      planet.add(mountToPlanet(makeTangerine(), { lat: 35,  lng: 220,  targetSize: 0.13, sink: 0.01 }));
 
       // 캐릭터 ① 돌하르방
-      planet.add(mountToPlanet(printStone(), { lat: 78, lng: -100, targetSize: 0.275, sink: 0.02, yaw: -35 }));
+      planet.add(mountToPlanet(makeDolharubang(), { lat: 78, lng: -100, targetSize: 0.275, sink: 0.02, yaw: -35 }));
 
       // 캐릭터 ② 라이캣 (GLB) — 비동기 로드
-      const gltfLoader = new GLTFLoader();
-      gltfLoader.load(
-        new URL('./threejs/src/models/Lycat-3d.glb', document.baseURI).href,
-        (gltf) => {
-          planet.add(mountToPlanet(gltf.scene, { lat: 70, lng: 110, targetSize: 0.275, sink: 0.02, yaw: 20 }));
-        }
-      );
+      loadLycat().then((model) => {
+        planet.add(mountToPlanet(model, { lat: 70, lng: 110, targetSize: 0.275, sink: 0.02, yaw: 20 }));
+      });
 
       // ---------- 새턴 링 2겹 ----------
       const ring = new THREE.Mesh(
