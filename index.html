@@ -16,7 +16,8 @@
   <script type="importmap">
   {
     "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/examples/jsm/": "https://unpkg.com/three@0.160.0/examples/jsm/"
     }
   }
   </script>
@@ -610,6 +611,10 @@
   <!-- =============== HERO 3D SCENE — 작은 별의 어린 왕자 =============== -->
   <script type="module">
     import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import printTree from './threejs/src/mesh/tree.js';
+    import printTangerine from './threejs/src/mesh/tangerine.js';
+    import printStone from './threejs/src/mesh/stone.js';
 
     const canvas = document.querySelector('#hero-canvas');
     if (!canvas) { /* no-op */ } else {
@@ -701,6 +706,77 @@
         house.add(s);
         smokes.push(s);
       }
+
+      // ---------- 행성 표면 오브제 (/threejs/src/mesh + Lycat GLB) ----------
+      // /threejs 의 원본 오브제를 그대로 import 해서 사용. 행성이 작으므로 mountToPlanet 으로
+      // (1) 원하는 목표 높이로 균일 스케일, (2) 바닥(min.y)을 0 으로 보정,
+      // (3) 표면 법선과 정렬해 lat/lng 위치에 부착.
+      function mountToPlanet(rawObj, { lat, lng, targetSize = 0.5, sink = 0, yaw = 0 }) {
+        // 1) 정규화된 크기로 스케일링 (월드 bbox 의 가장 긴 변 기준)
+        const preBox = new THREE.Box3().setFromObject(rawObj);
+        const preSize = new THREE.Vector3();
+        preBox.getSize(preSize);
+        const longest = Math.max(preSize.x, preSize.y, preSize.z) || 1;
+        rawObj.scale.multiplyScalar(targetSize / longest);
+
+        // 2) 다시 bbox 계산 → 바닥(min.y) 이 0 이 되도록 위로 들어올림
+        rawObj.updateMatrixWorld(true);
+        const box = new THREE.Box3().setFromObject(rawObj);
+        rawObj.position.y -= box.min.y;
+
+        // 3) wrapper 의 원점을 행성 표면점에 두고 표면 법선과 정렬
+        const wrapper = new THREE.Group();
+        wrapper.add(rawObj);
+
+        const r = R - sink;
+        const phi = THREE.MathUtils.degToRad(lat);
+        const theta = THREE.MathUtils.degToRad(lng);
+        const p = new THREE.Vector3(
+          r * Math.sin(phi) * Math.cos(theta),
+          r * Math.cos(phi),
+          r * Math.sin(phi) * Math.sin(theta)
+        );
+        wrapper.position.copy(p);
+        const q = new THREE.Quaternion().setFromUnitVectors(
+          new THREE.Vector3(0, 1, 0), p.clone().normalize()
+        );
+        if (yaw) {
+          q.multiply(new THREE.Quaternion().setFromAxisAngle(
+            new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(yaw)
+          ));
+        }
+        wrapper.quaternion.copy(q);
+        return wrapper;
+      }
+
+      // 야자수 5그루 (행성 곳곳에 산재)
+      planet.add(mountToPlanet(printTree(), { lat: 62,  lng: 35,   targetSize: 0.475, sink: 0.03 }));
+      planet.add(mountToPlanet(printTree(), { lat: 118, lng: 200,  targetSize: 0.425, sink: 0.03, yaw: 40 }));
+      planet.add(mountToPlanet(printTree(), { lat: 50,  lng: -150, targetSize: 0.45,  sink: 0.03, yaw: -20 }));
+      planet.add(mountToPlanet(printTree(), { lat: 95,  lng: 250,  targetSize: 0.40,  sink: 0.03, yaw: 60 }));
+      planet.add(mountToPlanet(printTree(), { lat: 145, lng: 60,   targetSize: 0.46,  sink: 0.03, yaw: 110 }));
+
+      // 감귤(한라봉) 8개 — 야자수 사이사이에 작게 흩뿌리기
+      planet.add(mountToPlanet(printTangerine(), { lat: 45,  lng: 150,  targetSize: 0.16, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 130, lng: 80,   targetSize: 0.14, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 95,  lng: 280,  targetSize: 0.15, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 30,  lng: -50,  targetSize: 0.13, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 60,  lng: 320,  targetSize: 0.15, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 110, lng: 180,  targetSize: 0.14, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 150, lng: 10,   targetSize: 0.16, sink: 0.01 }));
+      planet.add(mountToPlanet(printTangerine(), { lat: 35,  lng: 220,  targetSize: 0.13, sink: 0.01 }));
+
+      // 캐릭터 ① 돌하르방
+      planet.add(mountToPlanet(printStone(), { lat: 78, lng: -100, targetSize: 0.275, sink: 0.02, yaw: -35 }));
+
+      // 캐릭터 ② 라이캣 (GLB) — 비동기 로드
+      const gltfLoader = new GLTFLoader();
+      gltfLoader.load(
+        new URL('./threejs/src/models/Lycat-3d.glb', document.baseURI).href,
+        (gltf) => {
+          planet.add(mountToPlanet(gltf.scene, { lat: 70, lng: 110, targetSize: 0.275, sink: 0.02, yaw: 20 }));
+        }
+      );
 
       // ---------- 새턴 링 2겹 ----------
       const ring = new THREE.Mesh(

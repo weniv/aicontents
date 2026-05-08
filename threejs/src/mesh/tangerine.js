@@ -3,10 +3,11 @@ import * as THREE from "three";
 export default function printTangerine() {
 
   // 한라봉
+  // 텍스처 경로는 페이지 URL이 아닌 이 모듈 파일 기준으로 해석되도록 import.meta.url 사용
   const loader = new THREE.TextureLoader();
-  const basecolor = loader.load('../../src/textures/orange/Orange_001_COLOR.jpg');
-  const normal = loader.load('../../src/textures/orange/Orange_001_NORM.jpg')
-  const rough = loader.load('../../src/textures/orange/Orange_001_ROUGH.jpg')
+  const basecolor = loader.load(new URL('../textures/orange/Orange_001_COLOR.jpg', import.meta.url).href);
+  const normal = loader.load(new URL('../textures/orange/Orange_001_NORM.jpg', import.meta.url).href)
+  const rough = loader.load(new URL('../textures/orange/Orange_001_ROUGH.jpg', import.meta.url).href)
 
   const tangerine = new THREE.Group();
   const body = new THREE.Group();

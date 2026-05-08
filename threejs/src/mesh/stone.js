@@ -3,10 +3,12 @@ import * as THREE from "three";
 export default function printStone() {
   const Stone = new THREE.Group();
 
+  // 텍스처 경로는 페이지 URL이 아닌 이 모듈 파일 기준으로 해석되도록 import.meta.url 사용
+  // (원본은 '../src/...' 인데, 모듈 위치 기준으로는 ../textures/stone/... 이 정상)
   const textureLoader = new THREE.TextureLoader();
-  const stoneBase = textureLoader.load('../src/textures/stone/stone_basecolor.jpg')
-  const stoneNormal = textureLoader.load('../src/textures/stone/stone_normal.jpg')
-  const stoneRoughness = textureLoader.load('../src/textures/stone/stone_roughness.jpg')
+  const stoneBase = textureLoader.load(new URL('../textures/stone/stone_basecolor.jpg', import.meta.url).href)
+  const stoneNormal = textureLoader.load(new URL('../textures/stone/stone_normal.jpg', import.meta.url).href)
+  const stoneRoughness = textureLoader.load(new URL('../textures/stone/stone_roughness.jpg', import.meta.url).href)
 
   const stoneMaterial = new THREE.MeshStandardMaterial({
     color: 0x565656,

@@ -2,11 +2,12 @@ import * as THREE from "three";
 
 export default function printTree() {
 
+  // 텍스처 경로는 페이지 URL이 아닌 이 모듈 파일 기준으로 해석되도록 import.meta.url 사용
   const loader = new THREE.TextureLoader();
-  const basecolor = loader.load('../../src/textures/wood/wood_basecolor.jpg')
-  const normal = loader.load('../../src/textures/wood/wood_normal.jpg')
-  const rough = loader.load('../../src/textures/wood/wood_roughness.jpg')
-  const height = loader.load('../../src/textures/wood/wood_height.png')
+  const basecolor = loader.load(new URL('../textures/wood/wood_basecolor.jpg', import.meta.url).href)
+  const normal = loader.load(new URL('../textures/wood/wood_normal.jpg', import.meta.url).href)
+  const rough = loader.load(new URL('../textures/wood/wood_roughness.jpg', import.meta.url).href)
+  const height = loader.load(new URL('../textures/wood/wood_height.png', import.meta.url).href)
 
 
   // 나무
@@ -44,7 +45,7 @@ export default function printTree() {
   trunk.add(trunk4)
   tree.add(trunk);
 
-  const leafTexture = loader.load('../../src/textures/leaf/leaf_texture.png')
+  const leafTexture = loader.load(new URL('../textures/leaf/leaf_texture.png', import.meta.url).href)
 
   const leaf = new THREE.Group();
   const leafMaterial = new THREE.MeshStandardMaterial({
