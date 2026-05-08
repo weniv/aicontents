@@ -162,6 +162,8 @@
               <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
               <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
             </dl>
+            <!-- TODO: TRACK 01 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 01 주말반 접수하기 (새 창)">접수하기</a>
           </article>
 
           <article class="lp-track">
@@ -173,6 +175,8 @@
               <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
               <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
             </dl>
+            <!-- TODO: TRACK 02 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 02 주말반 접수하기 (새 창)">접수하기</a>
           </article>
 
           <article class="lp-track">
@@ -184,6 +188,8 @@
               <div class="lp-track__row"><dt>요일</dt><dd>매주 월 · 화</dd></div>
               <div class="lp-track__row"><dt>시간</dt><dd>19:00 ~ 22:00 (3h)</dd></div>
             </dl>
+            <!-- TODO: TRACK 03 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 03 평일 저녁반 접수하기 (새 창)">접수하기</a>
           </article>
 
           <article class="lp-track">
@@ -195,6 +201,8 @@
               <div class="lp-track__row"><dt>요일</dt><dd>매주 목 · 금</dd></div>
               <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
             </dl>
+            <!-- TODO: TRACK 04 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 04 평일반 접수하기 (새 창)">접수하기</a>
           </article>
 
           <article class="lp-track">
@@ -206,6 +214,8 @@
               <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
               <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
             </dl>
+            <!-- TODO: TRACK 05 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 05 주말반 접수하기 (새 창)">접수하기</a>
           </article>
 
         </div>
@@ -507,25 +517,33 @@
         </h2>
         <p class="lp-cta__desc">
           5개 트랙 중 본인의 일정에 맞는 트랙을 선택해 신청해주세요.<br />
-          신청은 Google Form을 통해 진행됩니다.
+          각 트랙 카드의 <strong>접수하기</strong> 버튼을 통해 Google Form으로 연결됩니다.
         </p>
 
-        <!-- TODO: 구글폼 링크가 정해지면 href만 교체하면 됩니다. -->
         <a
-          href="#"
+          href="#tracks"
           class="btn btn--primary"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Google Form으로 모집 신청 페이지 열기 (새 창)"
+          aria-label="트랙 선택 섹션으로 이동"
         >
-          신청 폼 열기
+          트랙 보러 가기
         </a>
-
-        <p class="lp-cta__hint">신청 폼 링크는 추후 공개됩니다.</p>
       </div>
     </section>
 
   </main>
+
+  <!-- =============== MODAL: 오픈 예정 안내 =============== -->
+  <div id="lp-modal" class="lp-modal" role="dialog" aria-modal="true" aria-labelledby="lp-modal-title" aria-hidden="true">
+    <div class="lp-modal__backdrop" data-modal-close aria-hidden="true"></div>
+    <div class="lp-modal__panel">
+      <h3 id="lp-modal-title" class="lp-modal__title">오픈 예정입니다</h3>
+      <p class="lp-modal__desc">
+        신청 폼은 준비 중이며, 오픈되는 대로<br />
+        각 트랙 카드의 <strong>접수하기</strong> 버튼이 활성화됩니다.
+      </p>
+      <button type="button" class="btn btn--primary lp-modal__close" data-modal-close>확인</button>
+    </div>
+  </div>
 
   <!-- =============== FOOTER =============== -->
   <footer class="lp-footer">
@@ -540,6 +558,54 @@
       </div>
     </div>
   </footer>
+
+  <!-- =============== 모달: 오픈 예정 안내 =============== -->
+  <script>
+    (function () {
+      const modal = document.getElementById('lp-modal');
+      if (!modal) return;
+
+      let lastFocused = null;
+
+      function open(trigger) {
+        lastFocused = trigger || document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        const closeBtn = modal.querySelector('.lp-modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+          lastFocused.focus();
+        }
+      }
+
+      // 트랙 접수하기 버튼: href가 비어있거나 "#"이면 모달로 안내
+      document.querySelectorAll('.lp-track__apply').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          const href = btn.getAttribute('href');
+          if (!href || href === '#' || href.trim() === '') {
+            e.preventDefault();
+            open(btn);
+          }
+        });
+      });
+
+      // 닫기 트리거 (백드롭, 확인 버튼)
+      modal.querySelectorAll('[data-modal-close]').forEach(function (el) {
+        el.addEventListener('click', close);
+      });
+
+      // ESC 키로 닫기
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
 
   <!-- =============== HERO 3D SCENE — 작은 별의 어린 왕자 =============== -->
   <script type="module">
@@ -583,6 +649,13 @@
       const planetGroup = new THREE.Group();
       scene.add(planetGroup);
 
+      // 모바일(<=900px)에서는 행성 시스템을 축소해 본문 가독성 확보
+      function applyPlanetScale() {
+        planetGroup.scale.setScalar(window.innerWidth <= 900 ? 0.65 : 1);
+      }
+      applyPlanetScale();
+      window.addEventListener('resize', applyPlanetScale);
+
       const R = 1.4;
       const planet = new THREE.Mesh(
         new THREE.SphereGeometry(R, 64, 64),
@@ -609,7 +682,12 @@
       );
       chimney.position.set(0.08, 0.34, -0.08);
       house.add(chimney);
-      house.position.set(0, R + 0.13, 0);
+      // 행성 대비 집 비율 살짝 축소
+      // 행성은 구면이라 바닥(평면) 모서리에 틈이 생겨 떠 보임 → houseSink만큼 표면 안쪽으로 박아 자연스럽게 안착시킴
+      const houseScale = 0.7;
+      const houseSink = 0.05;
+      house.scale.setScalar(houseScale);
+      house.position.set(0, R + 0.13 * houseScale - houseSink, 0);
       planet.add(house);
 
       // 굴뚝 연기 (모락모락)
