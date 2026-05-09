@@ -227,6 +227,38 @@ html {
   user-select: none;
   animation: lp-hint-pulse 2.4s ease-in-out infinite;
 }
+
+/* 행성 확대 / 축소 버튼 */
+.lp-hero__zoom {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  z-index: 2;
+}
+.lp-hero__zoom-btn {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .08);
+  background: rgba(255, 255, 255, .85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--grayLv1, #222);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+  transition: transform .15s ease, background .15s ease;
+}
+.lp-hero__zoom-btn:hover { background: #fff; transform: scale(1.06); }
+.lp-hero__zoom-btn:active { transform: scale(0.96); }
 @keyframes lp-hint-pulse {
   0%, 100% { opacity: .35; }
   50%      { opacity: .85; }
@@ -260,6 +292,7 @@ html {
     filter: drop-shadow(0 10px 30px rgba(var(--primary-rgb), .2));
   }
   .lp-hero__hint { display: none; }
+  .lp-hero__zoom { display: none; }
 }
 
 /* -------- About / 특징 -------- */
@@ -455,78 +488,146 @@ html {
 }
 
 /* -------- 포트폴리오 -------- */
-.lp-portfolio {
+.lp-portfolio-gallery {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 6rem;
-  align-items: center;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
-.lp-portfolio__list {
+.lp-portfolio-card {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  background: var(--background);
+  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  border-radius: 1.6rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.lp-portfolio__row {
+.lp-portfolio-card:hover {
+  transform: translateY(-.4rem);
+  box-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, .08);
+  border-color: rgba(var(--primary-rgb), .35);
+}
+.lp-portfolio-card--video {
+  grid-row: span 2;
+}
+.lp-portfolio-card__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+.lp-portfolio-card--video .lp-portfolio-card__thumb {
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 28rem;
+}
+.lp-portfolio-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.lp-portfolio-card__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.lp-portfolio-card:hover .lp-portfolio-card__thumb img {
+  transform: scale(1.04);
+}
+.lp-portfolio-card__caption {
+  padding: 1.6rem 2rem 2rem;
+}
+.lp-portfolio-card__caption small {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: .04em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: .4rem;
+}
+.lp-portfolio-card__caption strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--grayLv4);
+  line-height: 1.4;
+}
+
+.lp-portfolio-spec {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3.2rem;
+  align-items: center;
+  padding: 3.2rem;
+  background: var(--background);
+  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  border-radius: 1.6rem;
+}
+.lp-portfolio-spec__head small {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: .8rem;
+}
+.lp-portfolio-spec__head strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--grayLv4);
+}
+.lp-portfolio-spec__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lp-portfolio-spec__row {
   display: flex;
   gap: 1.6rem;
-  padding: 1.8rem 2rem;
-  background: var(--background);
-  border-radius: 1.4rem;
-  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  padding: 1.4rem 1.6rem;
+  background: var(--grayLv1);
+  border-radius: 1.2rem;
 }
-.lp-portfolio__row strong {
+.lp-portfolio-spec__row strong {
   flex-shrink: 0;
-  width: 9rem;
+  width: 7rem;
   color: var(--primary);
   font-weight: 700;
   font-size: 1.4rem;
 }
-.lp-portfolio__row span {
+.lp-portfolio-spec__row span {
   color: var(--grayLv4);
   font-size: 1.5rem;
   line-height: 1.6;
 }
-.lp-portfolio__visual {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 2.4rem;
-  background:
-    linear-gradient(135deg, rgba(var(--primary-rgb), .85), rgba(var(--primary-rgb), .55)),
-    linear-gradient(45deg, #2e6ff2, #6c9bff);
-  display: flex;
-  align-items: end;
-  padding: 3.2rem;
-  color: var(--primary-text);
-  overflow: hidden;
-}
-.lp-portfolio__visual::before {
-  content: "▶";
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 6rem;
-  opacity: .9;
-}
-.lp-portfolio__visual-text {
-  position: relative;
-  z-index: 1;
-}
-.lp-portfolio__visual-text small {
-  display: block;
-  font-size: 1.2rem;
-  letter-spacing: .1em;
-  opacity: .8;
-  margin-bottom: .8rem;
-}
-.lp-portfolio__visual-text strong {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
 
 @media (max-width: 900px) {
-  .lp-portfolio { grid-template-columns: 1fr; gap: 4rem; }
-  .lp-portfolio__visual { max-width: 36rem; margin: 0 auto; }
+  .lp-portfolio-gallery {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .lp-portfolio-card--video {
+    grid-row: span 1;
+  }
+  .lp-portfolio-card--video .lp-portfolio-card__thumb {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+  .lp-portfolio-spec {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    padding: 2.4rem;
+  }
 }
 
 /* -------- 모집 안내 / 일정 -------- */
