@@ -62,8 +62,8 @@
 
           <p class="lp-hero__desc">
             2026 AI특화 콘텐츠 창작자 양성 지원사업<br />
-            Gemini · Google Flow · Kling · CapCut · Canva 까지,<br />
-            제주에서 기획부터 영상·썸네일 제작까지 75시간 풀 프로세스로 익힙니다.
+            Gemini · Google Flow · Blender · Kling · CapCut · Canva 까지,<br />
+            기획부터 영상·썸네일 제작까지 75시간 풀 프로세스로 익힙니다.
           </p>
 
           <div class="lp-hero__ctas">
@@ -79,7 +79,7 @@
             </div>
             <div class="lp-hero__meta-item">
               <span class="lp-num">5<small style="font-size:1.6rem;">개</small></span>
-              <span class="lp-lab">맞춤 트랙</span>
+              <span class="lp-lab">시간대별 맞춤 트랙</span>
             </div>
             <div class="lp-hero__meta-item">
               <span class="lp-num">0<small style="font-size:1.6rem;">원</small></span>
@@ -127,7 +127,7 @@
             <div class="lp-feature__icon">02</div>
             <h3 class="lp-feature__title">제주 로컬 × 생성형 AI</h3>
             <p class="lp-feature__desc">
-              제주 관광·브랜드·캐릭터를 주제로 실제 시장에 통하는 콘텐츠를 만듭니다.
+              제주 관광·브랜드·캐릭터를 주제로 실제 사용할 수 있는 콘텐츠를 만듭니다.
               로컬 콘텐츠 기업 실무진의 직접 피드백으로 마무리합니다.
             </p>
           </article>
@@ -136,7 +136,7 @@
             <div class="lp-feature__icon">03</div>
             <h3 class="lp-feature__title">실습·프로젝트 중심 75시간</h3>
             <p class="lp-feature__desc">
-              이론 강의에 머물지 않고, 25차시 동안 매 차시마다 결과물을 쌓습니다.
+              이론 강의에 머물지 않고, 25차시 동안 결과물을 쌓습니다.
               마지막엔 본인의 포트폴리오로 남는 숏폼 영상을 발표합니다.
             </p>
           </article>
@@ -376,6 +376,19 @@
             교육 기간 동안 AI 영상·이미지 등 다양한 콘텐츠를 직접 제작합니다. 마지막에는 본인의 작품으로 남는 AI 숏폼 영상을 발표하며 마무리합니다.
           </p>
         </div>
+
+        <!-- 인터랙티브 3D 데모 — 학생 실습 결과물(돌하르방·라이캣 등 캐릭터 제작) -->
+        <figure class="lp-portfolio-showcase">
+          <div class="lp-portfolio-showcase__stage">
+            <canvas id="portfolio-canvas" aria-label="3D 캐릭터·풍경 데모. 드래그로 회전, 휠/핀치로 확대·축소"></canvas>
+            <span class="lp-portfolio-showcase__hint" aria-hidden="true">드래그 · 스크롤로 조작</span>
+          </div>
+          <figcaption class="lp-portfolio-showcase__caption">
+            <small>3D 캐릭터 · Three.js</small>
+            <strong>직접 만든 제주 캐릭터·풍경 3D 씬</strong>
+            <p>수업에서는 영상·이미지뿐 아니라 코드로 3D 캐릭터를 만드는 과정도 함께 다룹니다. 마우스 드래그로 회전, 휠로 확대·축소해 보세요.</p>
+          </figcaption>
+        </figure>
 
         <div class="lp-portfolio-gallery">
           <div class="lp-portfolio-card lp-portfolio-card--video">
@@ -1049,6 +1062,22 @@
         renderer.render(scene, camera);
       }
       animate();
+    }
+  </script>
+
+  <!-- =============== PORTFOLIO 3D SCENE — 학습 결과물 데모 (lazy init) =============== -->
+  <script type="module">
+    import initPortfolioScene from './style/3d/portfolio-scene.js';
+    const canvas = document.querySelector('#portfolio-canvas');
+    if (canvas) {
+      // 처음 뷰포트에 들어올 때만 초기화 — 스크롤 전에는 비용 0
+      const once = new IntersectionObserver(([entry], obs) => {
+        if (entry.isIntersecting) {
+          obs.disconnect();
+          initPortfolioScene(canvas);
+        }
+      }, { rootMargin: '200px' });
+      once.observe(canvas);
     }
   </script>
 

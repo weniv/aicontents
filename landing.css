@@ -488,6 +488,83 @@ html {
 }
 
 /* -------- 포트폴리오 -------- */
+/* 인터랙티브 3D 데모 (Portfolio 섹션 최상단) */
+.lp-portfolio-showcase {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 0 0 2.4rem;
+  padding: 0;
+}
+.lp-portfolio-showcase__stage {
+  position: relative;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  background: #7ccad5;
+  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  aspect-ratio: 16 / 10;
+  min-height: 32rem;
+}
+.lp-portfolio-showcase__stage > canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* OrbitControls 가 휠 / 터치 / 우클릭(pan) 모두 받도록 기본 동작 차단 */
+  touch-action: none;
+  cursor: grab;
+}
+.lp-portfolio-showcase__stage > canvas:active { cursor: grabbing; }
+.lp-portfolio-showcase__hint {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1.2rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .35);
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: .02em;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+.lp-portfolio-showcase__caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .8rem;
+  padding: 2rem 0;
+}
+.lp-portfolio-showcase__caption small {
+  font-size: 1.2rem;
+  letter-spacing: .04em;
+  color: var(--primary);
+  font-weight: 600;
+}
+.lp-portfolio-showcase__caption strong {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--grayLv4);
+  line-height: 1.4;
+}
+.lp-portfolio-showcase__caption p {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: var(--grayLv3);
+}
+@media (max-width: 900px) {
+  .lp-portfolio-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .lp-portfolio-showcase__stage {
+    aspect-ratio: 4 / 3;
+    min-height: 24rem;
+  }
+  .lp-portfolio-showcase__caption {
+    padding: 0;
+  }
+}
+
 .lp-portfolio-gallery {
   display: grid;
   grid-template-columns: 2fr 1fr;

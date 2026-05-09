@@ -63,7 +63,7 @@ myChar.rotation.y = Math.PI / -8
 scene.add(myChar);
 
 const modelLoader = new GLTFLoader();
-modelLoader.load('../../src/models/Lycat-3d.glb', (gltf) => {
+modelLoader.load('./src/models/Lycat-3d.glb', (gltf) => {
   const model = gltf.scene
   model.position.set(-2.8, -1.3, 1);
   model.rotation.y = Math.PI / 8

@@ -4,14 +4,18 @@ import * as THREE from 'three';
 // 원본: threejs/src/mesh/tree.js (학습 프로젝트) 를 모듈화하면서 텍스처 경로만 정리.
 // 반환 오브젝트는 원점 기준으로 trunk1 의 중심이 (0,0,0) 에 위치하므로,
 // 행성/지면에 올릴 때는 호출 측에서 bounding box 의 min.y 만큼 들어올려 사용.
-export default function makePalmTree() {
-  const loader = new THREE.TextureLoader();
-  const basecolor = loader.load(new URL('./textures/wood/wood_basecolor.jpg', import.meta.url).href);
-  const normal    = loader.load(new URL('./textures/wood/wood_normal.jpg', import.meta.url).href);
-  const rough     = loader.load(new URL('./textures/wood/wood_roughness.jpg', import.meta.url).href);
+//
+// 텍스처/Geometry/Material 은 모듈 단위로 1회만 만들어 모든 인스턴스가 공유합니다.
+// (행성 위에 5그루 배치해도 텍스처 다운로드/디코딩, GPU 업로드는 1회.)
+let shared = null;
 
-  const tree = new THREE.Group();
-  const trunk = new THREE.Group();
+function getShared() {
+  if (shared) return shared;
+  const loader = new THREE.TextureLoader();
+  const basecolor   = loader.load(new URL('./textures/wood/wood_basecolor.jpg', import.meta.url).href);
+  const normal      = loader.load(new URL('./textures/wood/wood_normal.jpg', import.meta.url).href);
+  const rough       = loader.load(new URL('./textures/wood/wood_roughness.jpg', import.meta.url).href);
+  const leafTexture = loader.load(new URL('./textures/leaf/leaf_texture.png', import.meta.url).href);
 
   const trunkMaterial = new THREE.MeshStandardMaterial({
     color: 0xa38049,
@@ -19,8 +23,27 @@ export default function makePalmTree() {
     normalMap: normal,
     roughnessMap: rough,
   });
+  const leafMaterial = new THREE.MeshStandardMaterial({
+    color: 0x84ad88,
+    side: THREE.DoubleSide,
+    map: leafTexture,
+    transparent: true,
+  });
 
   const trunkGeometry = new THREE.CylinderGeometry(0.8, 1, 1.5);
+  // 행성 위 작은 스케일이라 잎 세그먼트는 16x8 로도 실루엣 차이 없음.
+  const leafGeometry  = new THREE.SphereGeometry(2, 16, 8, Math.PI / 3, Math.PI / 3);
+
+  shared = { trunkMaterial, leafMaterial, trunkGeometry, leafGeometry };
+  return shared;
+}
+
+export default function makePalmTree() {
+  const { trunkMaterial, leafMaterial, trunkGeometry, leafGeometry } = getShared();
+
+  const tree = new THREE.Group();
+  const trunk = new THREE.Group();
+
   const trunk1 = new THREE.Mesh(trunkGeometry, trunkMaterial);
   trunk.add(trunk1);
 
@@ -43,16 +66,7 @@ export default function makePalmTree() {
   trunk.add(trunk4);
   tree.add(trunk);
 
-  const leafTexture = loader.load(new URL('./textures/leaf/leaf_texture.png', import.meta.url).href);
-
   const leaf = new THREE.Group();
-  const leafMaterial = new THREE.MeshStandardMaterial({
-    color: 0x84ad88,
-    side: THREE.DoubleSide,
-    map: leafTexture,
-    transparent: true,
-  });
-  const leafGeometry = new THREE.SphereGeometry(2, 32, 16, Math.PI / 3, Math.PI / 3);
 
   const leaf1 = new THREE.Mesh(leafGeometry, leafMaterial);
   leaf1.rotation.x = Math.PI / -2;
