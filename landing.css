@@ -24,6 +24,14 @@ html {
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid rgba(var(--grayLv2-rgb), .4);
+  transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+}
+/* 히어로 위에 있을 때: 헤더 투명 → 배경 이미지가 그대로 비침 */
+.lp-header--transparent {
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .lp-header__inner {
   display: flex;
@@ -31,32 +39,27 @@ html {
   justify-content: space-between;
   gap: 2rem;
   height: 7.2rem;
+  position: relative;
 }
 .lp-logo {
   display: inline-flex;
   align-items: center;
-  gap: .8rem;
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: clamp(1.5rem, 2.2vw, 1.8rem);
   color: var(--surface);
-  white-space: nowrap;
-}
-.lp-logo__mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  background: var(--primary);
-  color: var(--primary-text);
-  border-radius: 1rem;
-  font-weight: 800;
-  font-size: 1.4rem;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 .lp-nav {
   display: flex;
   gap: 2.4rem;
   align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .lp-nav a {
   color: var(--grayLv4);
@@ -64,11 +67,14 @@ html {
   font-weight: 500;
   transition: color .15s;
 }
-.lp-nav a:hover { color: var(--primary); }
+.lp-nav a:hover { color: var(--primary-a11y); }
 .lp-header__cta { display: flex; gap: .8rem; }
 
 @media (max-width: 900px) {
   .lp-nav { display: none; }
+  .lp-header__inner { gap: 1rem; }
+  /* 헤더 CTA 버튼 모바일에서 더 컴팩트하게 */
+  .lp-header__cta .btn { padding: 0 1.2rem; height: 3.6rem; font-size: 1.3rem; white-space: nowrap; }
 }
 
 /* -------- 공통 섹션 -------- */
@@ -87,13 +93,14 @@ html {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: .1em;
-  color: var(--primary);
+  color: var(--primary-a11y);
   text-transform: uppercase;
   margin-bottom: 1.2rem;
 }
 .lp-section__title {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
   font-size: clamp(2.8rem, 3.4vw, 4rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.3;
   margin-bottom: 1.6rem;
   letter-spacing: -.02em;
@@ -102,7 +109,7 @@ html {
   font-size: clamp(1.5rem, 1.5vw, 1.7rem);
   color: var(--grayLv4);
   line-height: 1.7;
-  max-width: 64rem;
+  max-width: 72rem;
   margin: 0 auto;
 }
 
@@ -110,14 +117,57 @@ html {
   .lp-section { padding: 6rem 0; }
 }
 
+/* -------- 모바일 전용 (≤740px): 타이틀/본문 크기 다운 + 한글 줄바꿈 보호 -------- */
+@media (max-width: 740px) {
+  .lp-hero { padding: 14rem 0 10rem; }
+  .lp-hero__badge { font-size: 1.2rem; padding: .4rem 1rem; margin-bottom: 1.6rem; }
+  .lp-hero__title {
+    font-size: clamp(3rem, 9vw, 4rem);
+    line-height: 1.25;
+    margin-bottom: 1.8rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .lp-hero__desc {
+    font-size: 1.4rem;
+    line-height: 1.55;
+    margin-bottom: 2.8rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .lp-section__title {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    line-height: 1.3;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .lp-section__desc {
+    font-size: 1.4rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .lp-cta__title {
+    font-size: clamp(2rem, 6vw, 2.6rem);
+    line-height: 1.3;
+    word-break: keep-all;
+  }
+  .lp-cta__desc {
+    font-size: 1.4rem;
+    word-break: keep-all;
+  }
+  .lp-cta .btn--primary { width: 100%; max-width: 24rem; }
+}
+
 /* -------- HERO -------- */
 .lp-hero {
   position: relative;
-  padding: 8rem 0 10rem;
+  margin-top: -7.2rem; /* 헤더(7.2rem) 만큼 위로 끌어올려 배경이 헤더 뒤로 보이도록 */
+  padding: 20rem 0 14rem; /* 헤더(7.2rem) + 상단 여유 공간 확보 */
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at top right, rgba(var(--primary-rgb), .12), transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(var(--primary-rgb), .08), transparent 55%);
+  background-image: url('./assets/img/bg-img.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
 }
 .lp-hero__inner {
   position: relative;
@@ -128,38 +178,47 @@ html {
   align-items: center;
 }
 .lp-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .8rem;
-  padding: .8rem 1.6rem;
-  background: var(--activation);
-  color: var(--primary-a11y);
-  border-radius: 5rem;
+  display: inline-block;
+  padding: .8rem 2rem;
+  background: transparent;
+  color: var(--surface);
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 2.4rem;
-}
-.lp-hero__badge::before {
-  content: "";
-  width: .8rem;
-  height: .8rem;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 0 .4rem rgba(var(--primary-rgb), .25);
+  border: 1.5px solid var(--surface);
+  border-radius: 999px;
 }
 .lp-hero__title {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
   font-size: clamp(3.4rem, 5.4vw, 6.4rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.18;
   letter-spacing: -.025em;
   margin-bottom: 2.4rem;
 }
 .lp-hero__title .lp-hl {
-  background: linear-gradient(120deg, var(--primary) 0%, #6c9bff 100%);
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  position: relative;
+  display: inline-block;
+  color: var(--surface);
+  padding: 0 .15em;
+  isolation: isolate;
+}
+.lp-hero__title .lp-hl::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.2em;
+  transform: translateY(-50%);
+  background: var(--primary);
+  z-index: -1;
+}
+.lp-hero__title .lp-hl--yellow::before {
+  background: #F3FF45;
+}
+.lp-hero__title .lp-hl--green::before {
+  background: #10FF04;
 }
 .lp-hero__desc {
   font-size: clamp(1.6rem, 1.8vw, 2rem);
@@ -191,7 +250,7 @@ html {
   margin-top: .4rem;
 }
 
-/* hero 3D visual */
+/* hero 우측 비주얼 — 포스터 키비주얼 에셋이 둥둥 떠다님 */
 .lp-hero__visual {
   position: relative;
   width: 100%;
@@ -199,72 +258,105 @@ html {
   aspect-ratio: 1 / 1;
   justify-self: end;
   min-height: 48rem;
-  cursor: grab;
 }
-.lp-hero__visual:active { cursor: grabbing; }
-
-#hero-canvas {
+.lp-hero__float {
   position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  /* 캔버스 뒤로 은은한 글로우 */
-  filter: drop-shadow(0 20px 60px rgba(var(--primary-rgb), .25));
-}
-
-.lp-hero__hint {
-  position: absolute;
-  left: 50%;
-  bottom: 1.2rem;
-  transform: translateX(-50%);
-  font-size: 1.2rem;
-  letter-spacing: .12em;
-  color: var(--grayLv3);
-  text-transform: uppercase;
-  opacity: .7;
   pointer-events: none;
   user-select: none;
-  animation: lp-hint-pulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .18));
+  will-change: transform;
+}
+.lp-hero__float--fern1 {
+  width: 40%;
+  top: 2%;
+  left: -10%;
+  z-index: 1;
+  animation: lp-float-c 5.6s ease-in-out -2.4s infinite;
+}
+.lp-hero__float--fern2 {
+  width: 24%;
+  top: -8%;
+  left: 28%;
+  z-index: 1;
+  animation: lp-float-d 7s ease-in-out -0.6s infinite;
+}
+.lp-hero__float--laptop {
+  width: 92%;
+  top: 10%;
+  left: 6%;
+  z-index: 2;
+  animation: lp-float-a 5s ease-in-out -0.2s infinite;
+}
+.lp-hero__float--dol {
+  width: 28%;
+  bottom: 6%;
+  right: 0%;
+  z-index: 3;
+  animation: lp-float-b 5.5s ease-in-out -1.2s infinite;
+}
+.lp-hero__float--blob {
+  width: 13%;
+  bottom: 4%;
+  left: 2%;
+  z-index: 4;
+  animation: lp-float-e 6.2s ease-in-out -1.8s infinite;
+}
+.lp-hero__float--bead-1 {
+  width: 5%;
+  top: 14%;
+  right: 4%;
+  z-index: 5;
+  animation: lp-float-f 4.8s ease-in-out -0.3s infinite;
+}
+.lp-hero__float--bead-2 {
+  width: 4%;
+  top: 52%;
+  left: 24%;
+  z-index: 5;
+  animation: lp-float-f 5.4s ease-in-out -1.6s infinite;
+}
+.lp-hero__float--bead-3 {
+  width: 3%;
+  bottom: 28%;
+  right: 30%;
+  z-index: 5;
+  animation: lp-float-f 4.2s ease-in-out -2.1s infinite;
 }
 
-/* 행성 확대 / 축소 버튼 */
-.lp-hero__zoom {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-  z-index: 2;
+@keyframes lp-float-a {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-28px); }
 }
-.lp-hero__zoom-btn {
-  width: 3.6rem;
-  height: 3.6rem;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, .08);
-  background: rgba(255, 255, 255, .85);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--grayLv1, #222);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
-  transition: transform .15s ease, background .15s ease;
+@keyframes lp-float-b {
+  0%, 100% { transform: translateY(0) rotate(8deg); }
+  50%      { transform: translateY(-22px) rotate(6deg); }
 }
-.lp-hero__zoom-btn:hover { background: #fff; transform: scale(1.06); }
-.lp-hero__zoom-btn:active { transform: scale(0.96); }
-@keyframes lp-hint-pulse {
-  0%, 100% { opacity: .35; }
-  50%      { opacity: .85; }
+@keyframes lp-float-c {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50%      { transform: translateY(-26px) rotate(-6.5deg); }
+}
+@keyframes lp-float-d {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50%      { transform: translateY(-32px) rotate(-1deg); }
+}
+@keyframes lp-float-e {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50%      { transform: translateY(-24px) rotate(3deg); }
+}
+@keyframes lp-float-f {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-18px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-hero__float { animation: none; }
 }
 
 @media (max-width: 900px) {
+  /* 히어로 상하 패딩 축소 (헤더 7.2rem 보정 유지) */
+  .lp-hero {
+    padding: 8rem 0 6rem;
+  }
   .lp-hero__inner {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -288,11 +380,27 @@ html {
     pointer-events: none;
     cursor: default;
   }
-  #hero-canvas {
-    filter: drop-shadow(0 10px 30px rgba(var(--primary-rgb), .2));
-  }
-  .lp-hero__hint { display: none; }
-  .lp-hero__zoom { display: none; }
+  .lp-hero__float { display: none; }
+}
+
+/* 히어로 하단 스크롤 화살표 */
+.lp-hero__scroll {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
+  opacity: .6;
+  animation: lp-bounce 1.8s ease-in-out infinite;
+  transition: opacity .2s;
+}
+.lp-hero__scroll:hover {
+  opacity: 1;
+}
+@keyframes lp-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
 }
 
 /* -------- About / 특징 -------- */
@@ -302,32 +410,32 @@ html {
   gap: 2.4rem;
 }
 .lp-feature {
-  padding: 3.2rem;
   border-radius: 2rem;
   background: var(--background);
   border: 1px solid rgba(var(--grayLv2-rgb), .5);
-  transition: transform .2s, box-shadow .2s;
+  overflow: hidden;
 }
-.lp-feature:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px -12px rgba(var(--surface-rgb), .12);
+.lp-feature__thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--grayLv2);
+  overflow: hidden;
 }
-.lp-feature__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 5.2rem;
-  height: 5.2rem;
-  border-radius: 1.4rem;
-  background: var(--activation);
-  color: var(--primary);
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-bottom: 2rem;
+.lp-feature__title,
+.lp-feature__desc {
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+}
+.lp-feature__thumb img,
+.lp-feature__thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .lp-feature__title {
   font-size: 1.9rem;
   font-weight: 700;
+  margin-top: 2.4rem;
   margin-bottom: 1rem;
   letter-spacing: -.01em;
 }
@@ -335,10 +443,20 @@ html {
   font-size: 1.5rem;
   line-height: 1.6;
   color: var(--grayLv4);
+  padding-bottom: 3.2rem;
 }
 
 @media (max-width: 900px) {
   .lp-features { grid-template-columns: 1fr; }
+}
+@media (max-width: 740px) {
+  .lp-feature__title,
+  .lp-feature__desc {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .lp-feature__title { font-size: 1.7rem; margin-top: 2rem; }
+  .lp-feature__desc { font-size: 1.4rem; padding-bottom: 2.4rem; }
 }
 
 /* -------- 트랙 카드 -------- */
@@ -356,21 +474,7 @@ html {
   box-shadow: var(--effect-shadow);
   border: 1px solid rgba(var(--grayLv2-rgb), .5);
   position: relative;
-  transition: transform .2s, box-shadow .2s, border-color .2s;
   overflow: hidden;
-}
-.lp-track:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px -12px rgba(var(--primary-rgb), .25);
-  border-color: rgba(var(--primary-rgb), .4);
-}
-.lp-track__num {
-  display: inline-block;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: .08em;
-  margin-bottom: .8rem;
 }
 .lp-track__name {
   font-size: 2rem;
@@ -416,6 +520,53 @@ html {
   color: var(--surface);
   font-weight: 700;
 }
+/* 트랙 A/B 색상 구분 */
+.lp-track__label {
+  display: inline-block;
+  padding: .2rem .8rem;
+  border-radius: .6rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  margin-right: .4rem;
+  vertical-align: baseline;
+  line-height: 1.5;
+}
+.lp-track--a .lp-track__label {
+  background: #F3FF45;
+}
+.lp-track--b .lp-track__label {
+  background: #10FF04;
+}
+.lp-track__course {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--grayLv3);
+  margin-bottom: 1.6rem;
+  line-height: 1.4;
+}
+
+/* 트랙 버튼 A/B 컬러 */
+.lp-track__apply--a {
+  background: #F3FF45;
+  color: #000;
+}
+.lp-track__apply--a:hover {
+  background: #e5f030;
+}
+.lp-track__apply--b {
+  background: #10FF04;
+  color: #000;
+}
+.lp-track__apply--b:hover {
+  background: #0de602;
+}
+.lp-track__apply[aria-disabled="true"].lp-track__apply--a,
+.lp-track__apply[aria-disabled="true"].lp-track__apply--b {
+  background: var(--grayLv1);
+  color: var(--grayLv3);
+}
+
 .lp-track__apply {
   width: 100%;
   height: 4.8rem;
@@ -427,67 +578,199 @@ html {
   letter-spacing: -.01em;
   box-sizing: border-box;
 }
+.lp-track__apply[aria-disabled="true"] {
+  background: var(--grayLv1);
+  color: var(--grayLv3);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+@media (max-width: 740px) {
+  .lp-track { padding: 2.4rem 2rem; }
+  .lp-track__name { font-size: 1.7rem; }
+  .lp-track__label { font-size: 1.2rem; }
+  .lp-track__course { font-size: 1.2rem; }
+  .lp-track__row { font-size: 1.3rem; }
+}
 
-/* -------- 커리큘럼 테이블 -------- */
-.lp-curr {
+
+/* -------- 커리큘럼 비교 카드 -------- */
+.lp-curr-compare {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.6rem;
+  gap: 2.4rem;
 }
-.lp-curr__item {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1.6rem;
-  padding: 2rem 2.4rem;
+.lp-curr-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
   background: var(--background);
-  border-radius: 1.6rem;
   border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  overflow: hidden;
 }
-.lp-curr__num {
-  display: inline-flex;
+.lp-curr-card__thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--grayLv2);
+  overflow: hidden;
+}
+.lp-curr-card__thumb img,
+.lp-curr-card__thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lp-curr-card__head {
+  padding: 3.2rem 2.8rem 2.4rem;
+}
+.lp-curr-card__label {
+  display: inline-block;
+  padding: .4rem 1.2rem;
+  border-radius: .8rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 1.2rem;
+}
+.lp-curr-card--a .lp-curr-card__label {
+  background: #F3FF45;
+}
+.lp-curr-card--b .lp-curr-card__label {
+  background: #10FF04;
+}
+.lp-curr-card__title {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
+  font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  margin-bottom: 1rem;
+}
+.lp-curr-card__desc {
+  font-size: 1.4rem;
+  line-height: 1.65;
+  color: var(--grayLv4);
+  margin-bottom: 1.6rem;
+}
+.lp-curr-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  font-size: 1.3rem;
+  color: var(--grayLv3);
+  line-height: 1.5;
+}
+.lp-curr-card__list {
+  list-style: none;
+  padding: 0 2.8rem 2.8rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  counter-reset: curr-step;
+}
+.lp-curr-card__list li {
+  counter-increment: curr-step;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: 1.4rem 0 1.4rem 3.6rem;
+  border-top: 1px solid rgba(var(--grayLv2-rgb), .5);
+  position: relative;
+}
+.lp-curr-card__list li::before {
+  content: counter(curr-step);
+  position: absolute;
+  left: 0;
+  top: 1.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--activation);
-  color: var(--primary-a11y);
-  font-size: 1.3rem;
-  font-weight: 700;
-  border-radius: 1rem;
-  padding: .6rem 0;
-  height: max-content;
-  min-width: 6rem;
+  color: #000;
 }
-.lp-curr__title {
-  font-size: 1.6rem;
+.lp-curr-card--a .lp-curr-card__list li::before {
+  background: #F3FF45;
+}
+.lp-curr-card--b .lp-curr-card__list li::before {
+  background: #10FF04;
+}
+.lp-curr-card__list strong {
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: .6rem;
   letter-spacing: -.01em;
 }
-.lp-curr__desc {
-  font-size: 1.4rem;
-  line-height: 1.6;
-  color: var(--grayLv4);
-  margin-bottom: .8rem;
+.lp-curr-card__list span {
+  font-size: 1.3rem;
+  color: var(--grayLv3);
+  line-height: 1.5;
 }
-.lp-curr__tools {
+
+@media (max-width: 900px) {
+  .lp-curr-compare {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 740px) {
+  .lp-curr-card__head {
+    padding: 2.4rem 2rem 2rem;
+  }
+  .lp-curr-card__list {
+    padding: 0 2rem 2rem;
+  }
+  .lp-curr-card__title {
+    word-break: keep-all;
+  }
+}
+
+/* -------- 수강생 혜택 -------- */
+.lp-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.lp-benefit {
+  border-radius: 1.6rem;
+  background: #FEFEFE;
+  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  overflow: hidden;
+  text-align: center;
+}
+.lp-benefit__thumb {
+  padding: 2.4rem 2.4rem 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
+  align-items: center;
+  justify-content: center;
 }
-.lp-curr__tool {
-  display: inline-block;
-  padding: .3rem .8rem;
-  border-radius: .6rem;
-  background: var(--grayLv1);
-  color: var(--grayLv4);
-  font-size: 1.2rem;
-  font-weight: 500;
+.lp-benefit__thumb img {
+  width: 60%;
+  height: auto;
+  display: block;
+}
+.lp-benefit__text {
+  padding: 1.6rem 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--surface);
 }
 
-@media (max-width: 767px) {
-  .lp-curr { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .lp-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .lp-benefits {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* -------- 포트폴리오 -------- */
+/* -------- 포트폴리오 (미사용) -------- */
 /* 인터랙티브 3D 데모 (Portfolio 섹션 최상단) */
 .lp-portfolio-showcase {
   display: grid;
@@ -537,7 +820,7 @@ html {
 .lp-portfolio-showcase__caption small {
   font-size: 1.2rem;
   letter-spacing: .04em;
-  color: var(--primary);
+  color: var(--primary-a11y);
   font-weight: 600;
 }
 .lp-portfolio-showcase__caption strong {
@@ -580,12 +863,6 @@ html {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.lp-portfolio-card:hover {
-  transform: translateY(-.4rem);
-  box-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, .08);
-  border-color: rgba(var(--primary-rgb), .35);
 }
 .lp-portfolio-card--video {
   grid-row: span 2;
@@ -606,7 +883,6 @@ html {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .4s ease;
 }
 .lp-portfolio-card__iframe {
   position: absolute;
@@ -616,9 +892,6 @@ html {
   border: 0;
   display: block;
 }
-.lp-portfolio-card:hover .lp-portfolio-card__thumb img {
-  transform: scale(1.04);
-}
 .lp-portfolio-card__caption {
   padding: 1.6rem 2rem 2rem;
 }
@@ -626,7 +899,7 @@ html {
   display: block;
   font-size: 1.2rem;
   letter-spacing: .04em;
-  color: var(--primary);
+  color: var(--primary-a11y);
   font-weight: 600;
   margin-bottom: .4rem;
 }
@@ -652,7 +925,7 @@ html {
   display: block;
   font-size: 1.2rem;
   letter-spacing: .1em;
-  color: var(--primary);
+  color: var(--primary-a11y);
   font-weight: 700;
   margin-bottom: .8rem;
 }
@@ -678,7 +951,7 @@ html {
 .lp-portfolio-spec__row strong {
   flex-shrink: 0;
   width: 7rem;
-  color: var(--primary);
+  color: var(--primary-a11y);
   font-weight: 700;
   font-size: 1.4rem;
 }
@@ -707,35 +980,138 @@ html {
   }
 }
 
-/* -------- 모집 안내 / 일정 -------- */
-.lp-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  gap: 1.6rem;
+/* -------- Final Project -------- */
+.lp-final {
+  max-width: 72rem;
+  margin: 0 auto;
 }
-.lp-info__item {
-  padding: 2.8rem 2.4rem;
-  border-radius: 1.6rem;
+.lp-final__thumb {
+  aspect-ratio: 21 / 10;
+  background: var(--grayLv2);
+  border-radius: 1.4rem;
+  overflow: hidden;
+  margin-bottom: 2.4rem;
+}
+.lp-final__thumb img,
+.lp-final__thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lp-final__specs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.lp-final__spec {
+  display: flex;
+  align-items: baseline;
+  gap: 1.6rem;
+  padding: 1.6rem 2.4rem;
   background: var(--background);
+  border-radius: 1.4rem;
   border: 1px solid rgba(var(--grayLv2-rgb), .5);
 }
-.lp-info__label {
+.lp-final__spec strong {
+  flex-shrink: 0;
   font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+  color: var(--primary-a11y);
+  letter-spacing: .04em;
+  width: 9rem;
 }
-.lp-info__value {
-  font-size: 1.7rem;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: .6rem;
+.lp-final__spec span {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--grayLv4);
 }
-.lp-info__sub {
+.lp-final__note {
+  margin-top: 2.4rem;
+  padding: 2rem 2.4rem;
+  background: var(--background);
+  border-radius: 1.2rem;
   font-size: 1.4rem;
   color: var(--grayLv3);
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (max-width: 740px) {
+  .lp-final__spec {
+    flex-direction: column;
+    gap: .4rem;
+    padding: 1.4rem 2rem;
+  }
+  .lp-final__spec strong {
+    width: auto;
+  }
+}
+
+/* -------- 모집 안내 / 일정 -------- */
+.lp-info-list {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.lp-info-list__row {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(var(--grayLv2-rgb), .5);
+}
+.lp-info-list__row:last-child {
+  border-bottom: none;
+}
+.lp-info-list__row dt {
+  flex-shrink: 0;
+  width: 9rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-a11y);
+  padding-top: .2rem;
+}
+.lp-info-list__row dd {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.lp-info-list__row dd span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--grayLv3);
+  margin-top: .3rem;
+}
+
+.lp-info-notice {
+  max-width: 72rem;
+  margin: 3.2rem auto 0;
+  padding: 2rem 2.8rem;
+  background: var(--background);
+  border-radius: 1.2rem;
+  text-align: left;
+}
+.lp-info-notice p {
+  font-size: 1.4rem;
+  color: var(--grayLv3);
+  line-height: 1.6;
+}
+.lp-info-notice p + p {
+  margin-top: .4rem;
+}
+
+@media (max-width: 740px) {
+  .lp-info-notice {
+    padding: 1.6rem 2rem;
+  }
+  .lp-info-list__row {
+    flex-direction: column;
+    gap: .4rem;
+    padding: 1.6rem 0;
+  }
+  .lp-info-list__row dt {
+    width: auto;
+  }
 }
 
 /* -------- FAQ -------- */
@@ -768,7 +1144,7 @@ html {
 }
 .lp-faq__item[open] summary::after {
   content: "−";
-  color: var(--primary);
+  color: var(--primary-a11y);
 }
 .lp-faq__item p {
   padding: 0 0 2.4rem;
@@ -782,25 +1158,21 @@ html {
   position: relative;
   padding: 8rem 0;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a4ad6 0%, #2e6ff2 60%, #5a8dff 100%);
+  background-image: url('./assets/img/bg-img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--primary-text);
   text-align: center;
-}
-.lp-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, .15), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, .1), transparent 45%);
 }
 .lp-cta__inner {
   position: relative;
   z-index: 1;
 }
 .lp-cta__title {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
   font-size: clamp(2.6rem, 4vw, 4.4rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: -.02em;
   margin-bottom: 2rem;
@@ -813,7 +1185,7 @@ html {
 }
 .lp-cta .btn--primary {
   background: var(--background);
-  color: var(--primary);
+  color: var(--primary-a11y);
   font-weight: 700;
   font-size: 1.7rem;
   height: 6.4rem;
@@ -931,4 +1303,156 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .lp-modal.is-open,
   .lp-modal.is-open .lp-modal__panel { animation: none; }
+}
+
+/* -------- Schedule Calendar -------- */
+.lp-calendar {
+  background: var(--background);
+  border: 1px solid rgba(var(--grayLv2-rgb), .5);
+  border-radius: 1.6rem;
+  overflow: hidden;
+  max-width: 92rem;
+  margin: 0 auto;
+}
+.lp-calendar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 2rem 2.4rem;
+  border-bottom: 1px solid rgba(var(--grayLv2-rgb), .5);
+}
+.lp-calendar__month {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--surface);
+  letter-spacing: -.01em;
+  text-align: center;
+  flex: 1;
+}
+.lp-calendar__nav {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--grayLv1);
+  color: var(--surface);
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, color .15s ease;
+}
+.lp-calendar__nav:hover {
+  background: var(--primary);
+}
+.lp-calendar__nav:disabled {
+  color: var(--grayLv2);
+  cursor: not-allowed;
+}
+.lp-calendar__nav:disabled:hover {
+  background: var(--grayLv1);
+}
+.lp-calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--grayLv1);
+  border-bottom: 1px solid rgba(var(--grayLv2-rgb), .5);
+}
+.lp-calendar__weekdays > div {
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--grayLv4);
+  letter-spacing: .04em;
+}
+.lp-calendar__weekdays > div:first-child { color: #d04444; }
+.lp-calendar__weekdays > div:last-child  { color: #4470d0; }
+
+.lp-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.lp-calendar__day {
+  position: relative;
+  min-height: 9rem;
+  padding: 1rem;
+  border-right: 1px solid rgba(var(--grayLv2-rgb), .35);
+  border-bottom: 1px solid rgba(var(--grayLv2-rgb), .35);
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.lp-calendar__day:nth-child(7n) { border-right: none; }
+.lp-calendar__day:nth-last-child(-n+7) { border-bottom: none; }
+.lp-calendar__day--empty {
+  background: rgba(var(--grayLv1-rgb), .4);
+}
+.lp-calendar__date {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--surface);
+  line-height: 1;
+}
+.lp-calendar__day:nth-child(7n+1) .lp-calendar__date { color: #d04444; }
+.lp-calendar__day:nth-child(7n)   .lp-calendar__date { color: #4470d0; }
+.lp-calendar__day--empty .lp-calendar__date {
+  color: var(--grayLv2);
+}
+/* 교육 일정 이벤트 마커 */
+.lp-calendar__event {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: .3rem .5rem;
+  border-radius: .4rem;
+  margin-top: .3rem;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* A트랙 노란 계열 3색 */
+.lp-calendar__event--t1 { background: #FFF3C4; color: #7A6200; }
+.lp-calendar__event--t4 { background: #FFE49A; color: #7A5600; }
+.lp-calendar__event--t5 { background: #FFEEBB; color: #7A5A00; }
+/* B트랙 초록 계열 2색 */
+.lp-calendar__event--t2 { background: #D4EDDA; color: #1B5E2F; }
+.lp-calendar__event--t3 { background: #B2DFDB; color: #00574B; }
+.lp-calendar__day--holiday {
+  background: #fff5f5;
+}
+.lp-calendar__day--holiday .lp-calendar__date {
+  color: #d04444 !important;
+}
+.lp-calendar__holiday {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d04444;
+  line-height: 1.3;
+  margin-top: .2rem;
+}
+
+@media (max-width: 740px) {
+  .lp-calendar__head { padding: 1.4rem 1.6rem; }
+  .lp-calendar__nav { width: 3.4rem; height: 3.4rem; }
+  .lp-calendar__nav svg { width: 16px; height: 16px; }
+  .lp-calendar__weekdays > div { font-size: 1.1rem; padding: 1rem 0; }
+  .lp-calendar__day { min-height: 5.6rem; padding: .4rem; }
+  .lp-calendar__date { font-size: 1.1rem; }
+  .lp-calendar__event { font-size: .9rem; padding: .2rem .4rem; }
+  .lp-calendar__holiday { font-size: .9rem; }
+}
+
+/* -------- 모바일 히어로 세로 확장 (파일 끝 — 순서 보장) -------- */
+@media (max-width: 740px) {
+  .lp-hero { padding: 14rem 0 10rem; }
 }

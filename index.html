@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -8,6 +8,8 @@
   <meta property="og:title" content="JEJU AI Creators · 2026 AI특화 콘텐츠 창작자 양성" />
   <meta property="og:description" content="제주 로컬 콘텐츠 × 생성형 AI · 75시간 무료 교육 · 5개 트랙 · 200명 모집" />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/meta/OG.png" />
+  <link rel="icon" type="image/png" href="./assets/meta/fav.png" />
 
   <link rel="stylesheet" href="./style/index.css" />
   <link rel="stylesheet" href="./landing.css" />
@@ -25,11 +27,10 @@
 <body>
 
   <!-- =============== HEADER =============== -->
-  <header class="lp-header">
+  <header class="lp-header lp-header--transparent">
     <div class="max-width lp-header__inner">
-      <a href="#top" class="lp-logo" aria-label="JEJU AI Creators · 2026 AI특화 콘텐츠 창작자 양성">
-        <span class="lp-logo__mark">AI</span>
-        <span>JEJU AI Creators</span>
+      <a href="#top" class="lp-logo" aria-label="제주 관광 부스트업 AI 콘텐츠 창작소">
+        <span>제주 AI 콘텐츠 창작소</span>
       </a>
 
       <nav class="lp-nav" aria-label="페이지 내 이동">
@@ -41,8 +42,7 @@
       </nav>
 
       <div class="lp-header__cta">
-        <!-- TODO: 구글폼 링크 추후 삽입 -->
-        <a href="#apply" class="btn btn--small btn--primary">지금 신청하기</a>
+        <a href="#tracks" class="btn btn--small btn--primary">지금 신청하기</a>
       </div>
     </div>
   </header>
@@ -53,50 +53,34 @@
     <section class="lp-hero">
       <div class="max-width lp-hero__inner">
         <div class="lp-hero__copy">
-          <span class="lp-hero__badge">한국콘텐츠진흥원 지원사업 · 교육비 100% 무료</span>
+          <span class="lp-hero__badge">교육비 100% 무료 & AI 구독료 지원</span>
 
           <h1 class="lp-hero__title">
-            제주에서 배우는<br />
-            <span class="lp-hl">생성형 AI 콘텐츠 창작</span>
+            <span class="lp-hl lp-hl--yellow">제주에서 배우는</span><br />
+            <span class="lp-hl lp-hl--green">생성형 AI 콘텐츠 창작</span>
           </h1>
 
-          <p class="lp-hero__desc">
-            2026 AI특화 콘텐츠 창작자 양성 지원사업<br />
-            기획부터 영상·썸네일 제작까지 75시간 풀 프로세스로 익힙니다.
-          </p>
-
-          <div class="lp-hero__ctas">
-            <!-- TODO: 구글폼 링크 추후 삽입 -->
-            <a href="#apply" class="btn btn--medium btn--primary">지금 신청하기</a>
-            <a href="#tracks" class="btn btn--medium btn--outline">트랙 둘러보기</a>
+<div class="lp-hero__ctas">
+            <a href="#tracks" class="btn btn--medium btn--primary">지금 신청하기 →</a>
           </div>
 
-          <dl class="lp-hero__meta">
-            <div class="lp-hero__meta-item">
-              <span class="lp-num">75<small style="font-size:1.6rem;">시간</small></span>
-              <span class="lp-lab">실습 중심 커리큘럼</span>
-            </div>
-            <div class="lp-hero__meta-item">
-              <span class="lp-num">5<small style="font-size:1.6rem;">개</small></span>
-              <span class="lp-lab">시간대별 맞춤 트랙</span>
-            </div>
-            <div class="lp-hero__meta-item">
-              <span class="lp-num">0<small style="font-size:1.6rem;">원</small></span>
-              <span class="lp-lab">교육비 부담 없음</span>
-            </div>
-          </dl>
         </div>
 
-        <!-- 인터랙티브 3D 오브제 -->
+        <!-- 우측 비주얼 영역: 포스터 키비주얼 에셋 둥둥 -->
         <div class="lp-hero__visual" aria-hidden="true">
-          <canvas id="hero-canvas"></canvas>
-          <div class="lp-hero__zoom" role="group" aria-label="행성 확대 / 축소">
-            <button type="button" class="lp-hero__zoom-btn" data-zoom="in" aria-label="확대">+</button>
-            <button type="button" class="lp-hero__zoom-btn" data-zoom="out" aria-label="축소">−</button>
-          </div>
-          <span class="lp-hero__hint">드래그 · 휠로 회전 · 줌</span>
+          <img src="./assets/img/img-3.png" alt="" class="lp-hero__float lp-hero__float--fern1" />
+          <img src="./assets/img/img-2.png" alt="" class="lp-hero__float lp-hero__float--laptop" />
+          <img src="./assets/img/img-1.png" alt="" class="lp-hero__float lp-hero__float--dol" />
+          <img src="./assets/img/img-4.png" alt="" class="lp-hero__float lp-hero__float--fern2" />
+          <img src="./assets/img/img-5.png" alt="" class="lp-hero__float lp-hero__float--blob" />
+          <img src="./assets/img/img-6.png" alt="" class="lp-hero__float lp-hero__float--bead-1" />
+          <img src="./assets/img/img-6.png" alt="" class="lp-hero__float lp-hero__float--bead-2" />
+          <img src="./assets/img/img-6.png" alt="" class="lp-hero__float lp-hero__float--bead-3" />
         </div>
       </div>
+      <a href="#about" class="lp-hero__scroll" aria-label="아래로 스크롤">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+      </a>
     </section>
 
     <!-- =============== ABOUT =============== -->
@@ -106,15 +90,15 @@
           <span class="lp-eyebrow">About Program</span>
           <h2 class="lp-section__title">현장에서 통하는 <span class="txt-highlight">AI 콘텐츠 실무</span>를 배웁니다</h2>
           <p class="lp-section__desc">
-            한국콘텐츠진흥원이 지원하고 제주대학교가 수행하며 위니브에서 강의하는 <br>
-            <strong>2026 AI특화 콘텐츠 창작자 양성 사업</strong>은
-            생성형 AI를 활용해 콘텐츠를 직접 기획·제작하는 실력 있는 창작자를 키우기 위한 무료 교육 프로그램입니다.
+            <strong>제주관광 부스트업 AI 콘텐츠 창작소</strong>는 한국콘텐츠진흥원 2026년 AI특화 콘텐츠 창작자 양성 사업의 일환으로, 생성형 AI를 활용해 콘텐츠를 직접 기획·제작하는 실력 있는 창작자를 키우기 위한 무료 교육 프로그램입니다. 기획부터 영상·디자인까지, 생성형 AI 활용 전 과정을 75시간에 걸쳐 직접 만들어보며 익히실 수 있습니다.
           </p>
         </div>
 
         <div class="lp-features">
           <article class="lp-feature">
-            <div class="lp-feature__icon">01</div>
+            <div class="lp-feature__thumb">
+              <img src="./assets/portfolio/백업/Animal_character_interviews_202604011131-0009.png" alt="기획부터 발행까지 풀 프로세스" loading="lazy" />
+            </div>
             <h3 class="lp-feature__title">기획부터 발행까지 풀 프로세스</h3>
             <p class="lp-feature__desc">
               아이데이션 → 캐릭터 디자인 → 이미지/영상 생성 → 후반 편집 → 썸네일까지,
@@ -123,7 +107,9 @@
           </article>
 
           <article class="lp-feature">
-            <div class="lp-feature__icon">02</div>
+            <div class="lp-feature__thumb">
+              <video src="./assets/portfolio/귤밭 영상.mp4" autoplay muted loop playsinline></video>
+            </div>
             <h3 class="lp-feature__title">제주 로컬 × 생성형 AI</h3>
             <p class="lp-feature__desc">
               제주 관광·브랜드·캐릭터를 주제로 실제 사용할 수 있는 콘텐츠를 만듭니다.
@@ -132,7 +118,9 @@
           </article>
 
           <article class="lp-feature">
-            <div class="lp-feature__icon">03</div>
+            <div class="lp-feature__thumb">
+              <img src="./assets/portfolio/백업/246-0003.png" alt="실습·프로젝트 중심 75시간" loading="lazy" />
+            </div>
             <h3 class="lp-feature__title">실습·프로젝트 중심 75시간</h3>
             <p class="lp-feature__desc">
               이론 강의에 머물지 않고, 75시간 동안 결과물을 쌓습니다.
@@ -143,316 +131,280 @@
       </div>
     </section>
 
+    <!-- =============== CURRICULUM =============== -->
+    <section id="curriculum" class="lp-section lp-section--gray">
+      <div class="max-width">
+        <div class="lp-section__head">
+          <span class="lp-eyebrow">Curriculum</span>
+          <h2 class="lp-section__title"><span class="txt-highlight">두 가지 트랙</span> 중 선택하세요</h2>
+          <p class="lp-section__desc">
+            본 사업은 영상 콘텐츠 제작 중심의 <strong>A 트랙</strong>과 브랜딩·디자인 실무 중심의 <strong>B 트랙</strong>으로 구성됩니다.<br>
+            본인의 관심 분야에 맞는 트랙을 선택해 해당 회차에 지원해 주세요. 모든 트랙은 75시간 풀 커리큘럼입니다.
+          </p>
+        </div>
+
+        <div class="lp-curr-compare">
+
+          <!-- A 트랙 카드 -->
+          <article class="lp-curr-card lp-curr-card--a">
+            <div class="lp-curr-card__thumb">
+              <video src="./assets/portfolio/영상-1.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="lp-curr-card__head">
+              <span class="lp-curr-card__label">A 트랙</span>
+              <h3 class="lp-curr-card__title">영상 콘텐츠 풀스택 제작 과정</h3>
+              <p class="lp-curr-card__desc">기획부터 영상 생성, 편집, SNS 업로드까지 AI를 활용한 1인 미디어 콘텐츠 제작의 전체 워크플로우를 마스터합니다.</p>
+              <div class="lp-curr-card__meta">
+                <span>운영: 1·4·5회차</span>
+                <span>ChatGPT, Gemini, Kling AI, Suno, CapCut, Canva</span>
+              </div>
+            </div>
+            <ol class="lp-curr-card__list">
+              <li>
+                <strong>AI 기획 및 리서치</strong>
+                <span>프롬프트 설계, 맞춤형 챗봇 세팅, 시장 조사 및 기획</span>
+              </li>
+              <li>
+                <strong>AI 생성 (이미지·영상·음악)</strong>
+                <span>이미지 생성, Kling AI 멀티샷, Suno 배경음악 제작</span>
+              </li>
+              <li>
+                <strong>실무 편집 및 디자인</strong>
+                <span>CapCut 컷 편집·오디오 싱크, Canva 썸네일 디자인</span>
+              </li>
+              <li>
+                <strong>프로젝트 중심 실습</strong>
+                <span>미니 프로젝트 2건 + 최종 개별 프로젝트</span>
+              </li>
+              <li>
+                <strong>SNS 채널 운영</strong>
+                <span>알고리즘 이해, 시청 지속률 분석, 업로드 전략</span>
+              </li>
+            </ol>
+          </article>
+
+          <!-- B 트랙 카드 -->
+          <article class="lp-curr-card lp-curr-card--b">
+            <div class="lp-curr-card__thumb">
+              <img src="./assets/portfolio/skin-img.png" alt="B 트랙 대표 이미지" loading="lazy" />
+            </div>
+            <div class="lp-curr-card__head">
+              <span class="lp-curr-card__label">B 트랙</span>
+              <h3 class="lp-curr-card__title">AI 기반 올인원 브랜딩 실무</h3>
+              <p class="lp-curr-card__desc">디자인 씽킹 기반의 기획력 위에 생성형 AI와 디자인 툴을 결합하여 하나의 브랜드를 A부터 Z까지 완성합니다.</p>
+              <div class="lp-curr-card__meta">
+                <span>운영: 2·3회차</span>
+                <span>ChatGPT, Gemini, Kling AI, Suno, CapCut, Canva</span>
+              </div>
+            </div>
+            <ol class="lp-curr-card__list">
+              <li>
+                <strong>디자인 씽킹과 브랜드 기획</strong>
+                <span>타겟 분석, 코어 메시지 도출, 톤앤매너·무드보드 세팅</span>
+              </li>
+              <li>
+                <strong>AI 비주얼 에셋 생성 실무</strong>
+                <span>로고, 캐릭터, 디자인 배경 등 맞춤형 시각 에셋 생성</span>
+              </li>
+              <li>
+                <strong>Canva 종합 디자인 마스터</strong>
+                <span>명함·포스터 오프라인 패키지부터 SNS 썸네일까지</span>
+              </li>
+              <li>
+                <strong>동적 콘텐츠와 숏폼 브랜딩</strong>
+                <span>AI 음성·시각 에셋 결합, CapCut 숏폼 홍보 영상</span>
+              </li>
+              <li>
+                <strong>개인 브랜딩 포트폴리오 완성</strong>
+                <span>브랜드 가이드북 제작 + SNS 운영 전략 발표</span>
+              </li>
+            </ol>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
     <!-- =============== TRACKS =============== -->
-    <section id="tracks" class="lp-section lp-section--gray">
+    <section id="tracks" class="lp-section">
       <div class="max-width">
         <div class="lp-section__head">
           <span class="lp-eyebrow">5 Tracks</span>
           <h2 class="lp-section__title">나에게 맞는 일정을 골라보세요</h2>
           <p class="lp-section__desc">
-            주말반 / 평일반 / 평일 저녁반 등 5개 트랙으로 운영됩니다.
-            모든 트랙은 75시간 커리큘럼을 다루며, 트랙당 30명 내외로 선발합니다.
+            5개 회차로 운영되며, 각 회차는 본인의 일정에 맞춰 선택할 수 있습니다.
+            모든 회차는 75시간 풀 커리큘럼으로 동일하게 진행되며, 회차당 30명을 선발합니다.
           </p>
         </div>
 
         <div class="lp-tracks">
 
-          <article class="lp-track">
-            <span class="lp-track__num">TRACK 01</span>
-            <h3 class="lp-track__name">주말반 <span class="lp-track__tag">15회차</span></h3>
+          <article class="lp-track lp-track--a">
+            <h3 class="lp-track__name"><span class="lp-track__label">1회차 - A트랙</span> 주말반 <span class="lp-track__tag">15회 × 5h</span></h3>
+            <p class="lp-track__course">영상 콘텐츠 풀스택 제작 과정</p>
             <dl class="lp-track__list">
               <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">고재훈</dd></div>
-              <div class="lp-track__row"><dt>기간</dt><dd>06.13 ~ 08.01</dd></div>
-              <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
-              <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
+              <div class="lp-track__row"><dt>기간</dt><dd>2026.06.13 ~ 08.01</dd></div>
+              <div class="lp-track__row"><dt>요일·시간</dt><dd>매주 토·일 13:00 ~ 18:00</dd></div>
+              <div class="lp-track__row"><dt>모집</dt><dd>05.13 ~ 05.26</dd></div>
+              <div class="lp-track__row"><dt>대상</dt><dd>고등학생·대학생·일반인</dd></div>
             </dl>
-            <!-- TODO: TRACK 01 구글폼 링크 추후 삽입 -->
-            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 01 주말반 접수하기 (새 창)">접수하기</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfByQtWb9kyPKHJO83-8Be39xoEDOcWKCBaqUog-7IO3onkIQ/viewform?usp=dialog" class="btn lp-track__apply lp-track__apply--a" target="_blank" rel="noopener noreferrer" aria-label="1회차 A트랙 주말반 접수하기 (새 창)">접수하기</a>
           </article>
 
-          <article class="lp-track">
-            <span class="lp-track__num">TRACK 02</span>
-            <h3 class="lp-track__name">주말반 <span class="lp-track__tag">15회차</span></h3>
+          <article class="lp-track lp-track--b">
+            <h3 class="lp-track__name"><span class="lp-track__label">2회차 - B트랙</span> 주말반 <span class="lp-track__tag">15회 × 5h</span></h3>
+            <p class="lp-track__course">AI 기반 올인원 브랜딩 실무</p>
             <dl class="lp-track__list">
-              <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">이희지 · 차경림 · 이호준</dd></div>
-              <div class="lp-track__row"><dt>기간</dt><dd>07.04 ~ 08.29</dd></div>
-              <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
-              <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
+              <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">이희지 · 차경림</dd></div>
+              <div class="lp-track__row"><dt>기간</dt><dd>2026.07.04 ~ 09.06 (8.29~30 휴강)</dd></div>
+              <div class="lp-track__row"><dt>요일·시간</dt><dd>매주 토·일 13:00 ~ 18:00</dd></div>
+              <div class="lp-track__row"><dt>모집</dt><dd>추후 공지</dd></div>
+              <div class="lp-track__row"><dt>대상</dt><dd>고등학생·대학생·일반인</dd></div>
             </dl>
-            <!-- TODO: TRACK 02 구글폼 링크 추후 삽입 -->
-            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 02 주말반 접수하기 (새 창)">접수하기</a>
+            <!-- TODO: 2회차 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn lp-track__apply lp-track__apply--b" aria-disabled="true" tabindex="-1" aria-label="2회차 B트랙 주말반 모집 예정">모집 예정</a>
           </article>
 
-          <article class="lp-track">
-            <span class="lp-track__num">TRACK 03</span>
-            <h3 class="lp-track__name">평일 저녁반 <span class="lp-track__tag">25회차</span></h3>
+          <article class="lp-track lp-track--b">
+            <h3 class="lp-track__name"><span class="lp-track__label">3회차 - B트랙</span> 평일 저녁반 <span class="lp-track__tag">25회 × 3h</span></h3>
+            <p class="lp-track__course">AI 기반 올인원 브랜딩 실무</p>
             <dl class="lp-track__list">
-              <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">이희지 · 차경림 · 이호준</dd></div>
-              <div class="lp-track__row"><dt>기간</dt><dd>07.06 ~ 09.29</dd></div>
-              <div class="lp-track__row"><dt>요일</dt><dd>매주 월 · 화</dd></div>
-              <div class="lp-track__row"><dt>시간</dt><dd>19:00 ~ 22:00 (3h)</dd></div>
+              <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">이희지 · 차경림</dd></div>
+              <div class="lp-track__row"><dt>기간</dt><dd>2026.07.06 ~ 09.29</dd></div>
+              <div class="lp-track__row"><dt>요일·시간</dt><dd>매주 월·화 19:00 ~ 22:00</dd></div>
+              <div class="lp-track__row"><dt>모집</dt><dd>추후 공지</dd></div>
+              <div class="lp-track__row"><dt>대상</dt><dd>직장인·소상공인·일반인</dd></div>
             </dl>
-            <!-- TODO: TRACK 03 구글폼 링크 추후 삽입 -->
-            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 03 평일 저녁반 접수하기 (새 창)">접수하기</a>
+            <!-- TODO: 3회차 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn lp-track__apply lp-track__apply--b" aria-disabled="true" tabindex="-1" aria-label="3회차 B트랙 평일 저녁반 모집 예정">모집 예정</a>
           </article>
 
-          <article class="lp-track">
-            <span class="lp-track__num">TRACK 04</span>
-            <h3 class="lp-track__name">평일반 <span class="lp-track__tag">15회차</span></h3>
+          <article class="lp-track lp-track--a">
+            <h3 class="lp-track__name"><span class="lp-track__label">4회차 - A트랙</span> 평일반 <span class="lp-track__tag">15회 × 5h</span></h3>
+            <p class="lp-track__course">영상 콘텐츠 풀스택 제작 과정</p>
             <dl class="lp-track__list">
               <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">김윤영</dd></div>
-              <div class="lp-track__row"><dt>기간</dt><dd>07.09(목) ~ 08.28(금)</dd></div>
-              <div class="lp-track__row"><dt>요일</dt><dd>매주 목 · 금</dd></div>
-              <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
+              <div class="lp-track__row"><dt>기간</dt><dd>2026.07.09 ~ 09.04 (8.20~21 휴강)</dd></div>
+              <div class="lp-track__row"><dt>요일·시간</dt><dd>매주 목·금 13:00 ~ 18:00</dd></div>
+              <div class="lp-track__row"><dt>모집</dt><dd>추후 공지</dd></div>
+              <div class="lp-track__row"><dt>대상</dt><dd>대학생·소상공인·일반인</dd></div>
             </dl>
-            <!-- TODO: TRACK 04 구글폼 링크 추후 삽입 -->
-            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 04 평일반 접수하기 (새 창)">접수하기</a>
+            <!-- TODO: 4회차 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn lp-track__apply lp-track__apply--a" aria-disabled="true" tabindex="-1" aria-label="4회차 A트랙 평일반 모집 예정">모집 예정</a>
           </article>
 
-          <article class="lp-track">
-            <span class="lp-track__num">TRACK 05</span>
-            <h3 class="lp-track__name">주말반 <span class="lp-track__tag">15회차</span></h3>
+          <article class="lp-track lp-track--a">
+            <h3 class="lp-track__name"><span class="lp-track__label">5회차 - A트랙</span> 주말반 <span class="lp-track__tag">15회 × 5h</span></h3>
+            <p class="lp-track__course">영상 콘텐츠 풀스택 제작 과정</p>
             <dl class="lp-track__list">
               <div class="lp-track__row"><dt>강사</dt><dd class="lp-track__instructor">고재훈</dd></div>
-              <div class="lp-track__row"><dt>기간</dt><dd>08.22 ~ 10.24</dd></div>
-              <div class="lp-track__row"><dt>요일</dt><dd>매주 토 · 일</dd></div>
-              <div class="lp-track__row"><dt>시간</dt><dd>13:00 ~ 18:00 (5h)</dd></div>
+              <div class="lp-track__row"><dt>기간</dt><dd>2026.08.22 ~ 10.24</dd></div>
+              <div class="lp-track__row"><dt>요일·시간</dt><dd>매주 토·일 13:00 ~ 18:00</dd></div>
+              <div class="lp-track__row"><dt>모집</dt><dd>추후 공지</dd></div>
+              <div class="lp-track__row"><dt>대상</dt><dd>전체 (직장인·소상공인·대학생·고등학생 등)</dd></div>
             </dl>
-            <!-- TODO: TRACK 05 구글폼 링크 추후 삽입 -->
-            <a href="#" class="btn btn--primary lp-track__apply" target="_blank" rel="noopener noreferrer" aria-label="TRACK 05 주말반 접수하기 (새 창)">접수하기</a>
+            <!-- TODO: 5회차 구글폼 링크 추후 삽입 -->
+            <a href="#" class="btn lp-track__apply lp-track__apply--a" aria-disabled="true" tabindex="-1" aria-label="5회차 A트랙 주말반 모집 예정">모집 예정</a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- =============== CURRICULUM =============== -->
-    <section id="curriculum" class="lp-section">
+    <!-- =============== SCHEDULE CALENDAR =============== -->
+    <section id="schedule" class="lp-section lp-section--gray">
       <div class="max-width">
         <div class="lp-section__head">
-          <span class="lp-eyebrow">Curriculum</span>
-          <h2 class="lp-section__title"><span class="txt-highlight">75시간</span> 풀 코스</h2>
+          <span class="lp-eyebrow">Schedule</span>
+          <h2 class="lp-section__title">교육 전체 일정을 <span class="txt-highlight">한눈에</span></h2>
           <p class="lp-section__desc">
-            AI 기초부터 실전 영상 제작까지, 매 차시 결과물이 쌓이는 실습형 커리큘럼입니다.
+            5개 회차로 운영되며, 회차별 모집 기간과 교육 기간을 시간 흐름에 따라 확인할 수 있습니다. 본인의 일정에 맞는 회차를 골라 신청해 주세요.
           </p>
         </div>
 
-        <div class="lp-curr">
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">1~3차시</span>
-            <div>
-              <h3 class="lp-curr__title">제주 로컬 콘텐츠 이해와 생성형 AI 기초</h3>
-              <p class="lp-curr__desc">제주 콘텐츠 산업 분석, 생성형 AI 작동 원리, 최신 AI 도구 비교, 윤리 / 저작권 이슈.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">ChatGPT</span>
-                <span class="lp-curr__tool">Claude</span>
-                <span class="lp-curr__tool">Gemini</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">4~5차시</span>
-            <div>
-              <h3 class="lp-curr__title">디자인 사고와 아이데이션</h3>
-              <p class="lp-curr__desc">제주 콘텐츠 사례 기반 디자인 사고 훈련, AI를 활용한 아이디어 확장과 기획 고도화.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">ChatGPT</span>
-                <span class="lp-curr__tool">FigJam</span>
-                <span class="lp-curr__tool">결과물: 콘텐츠 기획 문서</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">6~8차시</span>
-            <div>
-              <h3 class="lp-curr__title">AI 활용 제주 로컬 캐릭터 기획·개발</h3>
-              <p class="lp-curr__desc">캐릭터 기획 프로세스, 프롬프트 설계, 다각도/표정 통일, AI 캐릭터 디자인 실습.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">Midjourney</span>
-                <span class="lp-curr__tool">Blender</span>
-                <span class="lp-curr__tool">결과물: 3D 캐릭터 1종</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">9~10차시</span>
-            <div>
-              <h3 class="lp-curr__title">고품질 AI 이미지 콘텐츠 생성 실무</h3>
-              <p class="lp-curr__desc">프롬프트 기반 이미지 생성, 스타일 변환·디테일 보정, 결과물 품질 향상 전략.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">ChatGPT</span>
-                <span class="lp-curr__tool">Gemini</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">11~14차시</span>
-            <div>
-              <h3 class="lp-curr__title">제주 콘텐츠 광고 기획 · AI 영상 생성</h3>
-              <p class="lp-curr__desc">광고/홍보 영상 사례, 스토리보드와 컷 구성, 최신 AI 비디오 모델 기반 제작 실습.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">Grok</span>
-                <span class="lp-curr__tool">Kling AI</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">15~16차시</span>
-            <div>
-              <h3 class="lp-curr__title">AI 오디오 생성 · CapCut 실전 편집</h3>
-              <p class="lp-curr__desc">AI TTS 더빙, 자동 자막 스타일링, Suno 기반 제주 감성 BGM 생성 실습.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">CapCut</span>
-                <span class="lp-curr__tool">Suno</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">17~18차시</span>
-            <div>
-              <h3 class="lp-curr__title">캐릭터 콘텐츠 기획부터 영상 제작까지</h3>
-              <p class="lp-curr__desc">앞서 만든 AI 캐릭터를 활용한 숏폼 튜토리얼, 시각적 연출 심화.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">CapCut</span>
-                <span class="lp-curr__tool">결과물: AI 숏폼 (15~60초)</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">19~20차시</span>
-            <div>
-              <h3 class="lp-curr__title">클릭을 부르는 썸네일 · Canva 제작</h3>
-              <p class="lp-curr__desc">'터지는 썸네일' 구조 분석, ChatGPT 카피라이팅, Canva 활용 A/B 테스트 시안.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">Canva</span>
-                <span class="lp-curr__tool">ChatGPT</span>
-                <span class="lp-curr__tool">결과물: SNS 카드뉴스</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">21~24차시</span>
-            <div>
-              <h3 class="lp-curr__title">개인 프로젝트 기획 · 제작</h3>
-              <p class="lp-curr__desc">자유 주제 선정, 기획-생성-편집-썸네일 풀 프로세스 실전 영상 제작 실습.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">전 차시 툴 통합</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="lp-curr__item">
-            <span class="lp-curr__num">25차시</span>
-            <div>
-              <h3 class="lp-curr__title">프로젝트 발표 · 실무진 피드백</h3>
-              <p class="lp-curr__desc">제주 로컬 콘텐츠 기업 대표 및 실무진과 함께하는 발표 / 피드백 세션.</p>
-              <div class="lp-curr__tools">
-                <span class="lp-curr__tool">결과물: 최종 포트폴리오 1종</span>
-              </div>
-            </div>
-          </article>
-
+        <div class="lp-calendar">
+          <div class="lp-calendar__head">
+            <button type="button" class="lp-calendar__nav" data-cal-nav="prev" aria-label="이전 달"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg></button>
+            <h3 class="lp-calendar__month" id="lp-cal-month">2026년 6월</h3>
+            <button type="button" class="lp-calendar__nav" data-cal-nav="next" aria-label="다음 달"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg></button>
+          </div>
+          <div class="lp-calendar__weekdays" aria-hidden="true">
+            <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+          </div>
+          <div class="lp-calendar__grid" id="lp-cal-grid" role="grid" aria-labelledby="lp-cal-month"></div>
         </div>
       </div>
     </section>
 
-    <!-- =============== PORTFOLIO =============== -->
+    <!-- =============== BENEFITS =============== -->
+    <section class="lp-section">
+      <div class="max-width">
+        <div class="lp-section__head">
+          <span class="lp-eyebrow">Benefits</span>
+          <h2 class="lp-section__title"><span class="txt-highlight">수강생 혜택</span></h2>
+        </div>
+
+        <div class="lp-benefits">
+          <article class="lp-benefit">
+            <div class="lp-benefit__thumb">
+              <img src="./assets/img/1.png" alt="수강생 혜택 1" loading="lazy" />
+            </div>
+            <p class="lp-benefit__text">AI 구독료 지원</p>
+          </article>
+          <article class="lp-benefit">
+            <div class="lp-benefit__thumb">
+              <img src="./assets/img/2.png" alt="수강료 전액 무료" loading="lazy" />
+            </div>
+            <p class="lp-benefit__text">수강료 전액 무료</p>
+          </article>
+          <article class="lp-benefit">
+            <div class="lp-benefit__thumb">
+              <img src="./assets/img/3.png" alt="현직 전문가 멘토링" loading="lazy" />
+            </div>
+            <p class="lp-benefit__text">현직 전문가 멘토링</p>
+          </article>
+          <article class="lp-benefit">
+            <div class="lp-benefit__thumb">
+              <img src="./assets/img/4.png" alt="100% 오프라인 밀착 교육" loading="lazy" />
+            </div>
+            <p class="lp-benefit__text">100% 오프라인 밀착 교육</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== FINAL PROJECT =============== -->
     <section class="lp-section lp-section--gray">
       <div class="max-width">
         <div class="lp-section__head">
-          <span class="lp-eyebrow">Portfolio</span>
-          <h2 class="lp-section__title">수업에서 만나는 <span class="txt-highlight">AI 포트폴리오 작품</span></h2>
+          <span class="lp-eyebrow">Final Project</span>
+          <h2 class="lp-section__title">75시간 끝에, 나만의 <span class="txt-highlight">콘텐츠 한 편</span>이 남습니다</h2>
           <p class="lp-section__desc">
-            교육 기간 동안 AI 영상·이미지 등 다양한 콘텐츠를 직접 제작합니다. 마지막에는 본인의 작품으로 남는 AI 숏폼 영상을 발표하며 마무리합니다.
+            교육의 마지막은 본인이 직접 기획·제작한 콘텐츠로 마무리됩니다. 미니 프로젝트로 단계별 감각을 익히고, 최종 프로젝트로 본인의 포트폴리오 한 편을 완성합니다.
           </p>
         </div>
 
-        <!-- 인터랙티브 3D 데모 — 학생 실습 결과물(돌하르방·라이캣 등 캐릭터 제작) -->
-        <figure class="lp-portfolio-showcase">
-          <div class="lp-portfolio-showcase__stage">
-            <canvas id="portfolio-canvas" aria-label="3D 캐릭터·풍경 데모. 드래그로 회전, 휠/핀치로 확대·축소"></canvas>
-            <span class="lp-portfolio-showcase__hint" aria-hidden="true">드래그 · 스크롤로 조작</span>
+        <div class="lp-final">
+          <div class="lp-final__thumb">
+            <video src="./assets/portfolio/고양이 영상.mp4" autoplay muted loop playsinline></video>
           </div>
-          <figcaption class="lp-portfolio-showcase__caption">
-            <small>3D 캐릭터 · Three.js</small>
-            <strong>직접 만든 제주 캐릭터·풍경 3D 씬</strong>
-            <p>수업에서는 영상·이미지뿐 아니라 코드로 3D 캐릭터를 만드는 과정도 함께 다룹니다. 마우스 드래그로 회전, 휠로 확대·축소해 보세요.</p>
-          </figcaption>
-        </figure>
-
-        <div class="lp-portfolio-gallery">
-          <div class="lp-portfolio-card lp-portfolio-card--video">
-            <div class="lp-portfolio-card__thumb">
-              <iframe class="lp-portfolio-card__iframe"
-                      src="https://www.youtube-nocookie.com/embed/NvxGnAB1jI4?rel=0&modestbranding=1"
-                      title="AI로 제작한 광고 영상"
-                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowfullscreen
-                      loading="lazy"></iframe>
-            </div>
-            <div class="lp-portfolio-card__caption">
-              <small>AI 영상 · YouTube</small>
-              <strong>AI로 제작한 광고 영상</strong>
-            </div>
-          </div>
-
-          <div class="lp-portfolio-card">
-            <div class="lp-portfolio-card__thumb">
-              <img src="./assets/portfolio/1_google_Flow_Animal_character_interviewed.png"
-                   alt="인터뷰하는 동물 캐릭터를 표현한 AI 생성 이미지" loading="lazy" />
-            </div>
-            <div class="lp-portfolio-card__caption">
-              <small>AI 이미지 · Google Flow</small>
-              <strong>인터뷰하는 동물 캐릭터</strong>
-            </div>
-          </div>
-
-          <div class="lp-portfolio-card">
-            <div class="lp-portfolio-card__thumb">
-              <img src="./assets/portfolio/2_google_Flow_Cats_playing_music.png"
-                   alt="음악을 연주하는 고양이들을 표현한 AI 생성 이미지" loading="lazy" />
-            </div>
-            <div class="lp-portfolio-card__caption">
-              <small>AI 이미지 · Google Flow</small>
-              <strong>음악을 연주하는 고양이들</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="lp-portfolio-spec">
-          <div class="lp-portfolio-spec__head">
-            <small>FINAL PROJECT</small>
-            <strong>나만의 AI 숏폼 영상으로<br />수료를 마무리하세요</strong>
-          </div>
-          <div class="lp-portfolio-spec__list">
-            <div class="lp-portfolio-spec__row">
+          <div class="lp-final__specs">
+            <div class="lp-final__spec">
               <strong>분량</strong>
-              <span>15초 ~ 60초 숏폼 영상</span>
+              <span>15초 ~ 60초 숏폼 콘텐츠</span>
             </div>
-            <div class="lp-portfolio-spec__row">
+            <div class="lp-final__spec">
               <strong>주제</strong>
-              <span>제주 로컬 브랜드 · 관광 · 캐릭터 등 자유 선택</span>
+              <span>제주 관광·자연 / 문화·전통 / 로컬푸드 / 지역 브랜드 — 4가지 중 선택</span>
             </div>
-            <div class="lp-portfolio-spec__row">
-              <strong>구성</strong>
-              <span>AI 생성 이미지 / 영상 + AI 음성(TTS) 또는 BGM + 자막 편집 + 썸네일 1종</span>
+            <div class="lp-final__spec">
+              <strong>필수 구성 요소</strong>
+              <span>AI 생성 이미지 또는 영상 · AI 음성(TTS) 또는 BGM · 자막 · 썸네일 1종</span>
             </div>
-            <div class="lp-portfolio-spec__row">
-              <strong>제출</strong>
-              <span>오프라인 현장 발표</span>
-            </div>
-            <div class="lp-portfolio-spec__row">
-              <strong>평가</strong>
-              <span>제주 로컬 콘텐츠 기업 실무진의 직접 피드백</span>
+            <div class="lp-final__spec">
+              <strong>활용 도구</strong>
+              <span>ChatGPT · Gemini · Kling AI · Suno · CapCut · Canva 등</span>
             </div>
           </div>
         </div>
@@ -470,42 +422,37 @@
           </p>
         </div>
 
-        <div class="lp-info">
-          <div class="lp-info__item">
-            <div class="lp-info__label">교육 대상</div>
-            <div class="lp-info__value">콘텐츠 분야 현업 창작자 및 예비 창작자</div>
-            <div class="lp-info__sub">취·창업 준비생, 대학생, 학생 등</div>
+        <dl class="lp-info-list">
+          <div class="lp-info-list__row">
+            <dt>교육 대상</dt>
+            <dd>콘텐츠 분야 현업 창작자 및 예비 창작자 <span>취·창업 준비생, 대학생, 학생 등</span></dd>
           </div>
-          <div class="lp-info__item">
-            <div class="lp-info__label">선발 인원</div>
-            <div class="lp-info__value">트랙당 30명</div>
-            <div class="lp-info__sub">총 150명 (5개 트랙)</div>
+          <div class="lp-info-list__row">
+            <dt>선발 인원</dt>
+            <dd>회차당 30명 <span>총 150명 (5개 회차, 예비인원 5명 별도)</span></dd>
           </div>
-          <div class="lp-info__item">
-            <div class="lp-info__label">교육 비용</div>
-            <div class="lp-info__value">전액 무료 (0원)</div>
-            <div class="lp-info__sub">한국콘텐츠진흥원 국고보조 100%</div>
+          <div class="lp-info-list__row">
+            <dt>교육 비용</dt>
+            <dd>전액 무료 (0원) <span>한국콘텐츠진흥원 국고보조 100%</span></dd>
           </div>
-          <div class="lp-info__item">
-            <div class="lp-info__label">교육 방식</div>
-            <div class="lp-info__value">오프라인 중심</div>
-            <div class="lp-info__sub">추후 장소 안내 예정</div>
+          <div class="lp-info-list__row">
+            <dt>교육 방식</dt>
+            <dd>100% 오프라인 <span>제주대학교 공과대학 4호관</span></dd>
           </div>
-          <div class="lp-info__item">
-            <div class="lp-info__label">선발 절차</div>
-            <div class="lp-info__value">서류 심사 → 최종 선발</div>
-            <div class="lp-info__sub">참여 동기 · 학습 의지</div>
+          <div class="lp-info-list__row">
+            <dt>선발 절차</dt>
+            <dd>지원 동기 기반 서류 선발 <span>합격자 개별 안내</span></dd>
           </div>
-          <div class="lp-info__item">
-            <div class="lp-info__label">수료 기준</div>
-            <div class="lp-info__value">전체 교육 이수율 70% 이상</div>
-            <div class="lp-info__sub">실습 과제 / 프로젝트 필수</div>
+          <div class="lp-info-list__row">
+            <dt>수료 기준</dt>
+            <dd>출석률 70% 이상 + 최종 프로젝트 제출 <span>수료 시 AI 구독료 8만원 지원</span></dd>
           </div>
-        </div>
+        </dl>
 
-        <p style="margin-top: 2.4rem; font-size: 1.4rem; color: var(--grayLv3);">
-          ※ 교육생은 1개 트랙에만 참여할 수 있습니다. 신청은 본인의 일정에 맞는 트랙 1개만 선택해 주세요.
-        </p>
+        <div class="lp-info-notice">
+          <p>※ 본 교육은 1개 회차에만 참여할 수 있습니다. 본인의 일정과 학습 목적에 가장 적합한 회차 1개를 선택해 신청해 주세요.</p>
+          <p>※ 수료 기준을 충족하지 못한 경우 AI 구독료는 지원되지 않으니 꼭 참고해 주세요.</p>
+        </div>
       </div>
     </section>
 
@@ -520,43 +467,48 @@
         <div class="lp-faq">
 
           <details class="lp-faq__item">
-            <summary>교육비가 정말 무료인가요?</summary>
-            <p>네, 한국콘텐츠진흥원의 국고보조금 100%로 운영되어 교육생 부담은 0원입니다. 실습 도구·재료 등도 별도 부담 없이 진행됩니다.</p>
+            <summary>Q1. 교육비가 정말 무료인가요?</summary>
+            <p>네, 교육생 부담은 0원입니다.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>AI 도구 구독료(Gemini, Kling 등)도 지원되나요?</summary>
-            <p>
-              네, <strong>수료자에 한해 교육 종료 후 지원</strong>됩니다. 각 과정에서 사용하는 AI 도구의 <strong>학습 기간(개월 수)만큼</strong> 구독료가 지원되는 구조입니다.<br />
-              예를 들어 Gemini를 1개월간 다룬다면 Gemini 1개월 구독료, Kling을 1개월간 다룬다면 Kling 1개월 구독료가 지원됩니다.<br />
-              <strong>수강생이 먼저 본인 명의로 결제</strong>한 뒤, <strong>수료 확인 후 환급 형태로 지원</strong>되니 결제 영수증을 보관해 주세요.
-            </p>
+            <summary>Q2. AI 도구 구독료(Gemini, Kling 등)도 지원되나요?</summary>
+            <p>네, 수료자에 한해 1인당 8만 원의 AI 구독료가 교육 종료 후 일괄 지급됩니다. 본인이 결제하신 도구의 비용 영수증을 제출해 주시면, 수료 확인 후 환급 형태로 지원되니 결제 영수증을 꼭 보관해 주세요.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>비전공자나 초보자도 신청할 수 있나요?</summary>
-            <p>가능합니다. 콘텐츠 기획·창작·유통에 AI를 활용하고 싶은 현업 창작자와 예비 창작자(취·창업 준비생, 대학생 등) 모두 지원할 수 있습니다. 1~3차시에서 AI 기초부터 함께 다룹니다.</p>
+            <summary>Q3. 비전공자나 초보자도 신청할 수 있나요?</summary>
+            <p>가능합니다. 콘텐츠 기획·창작·유통에 AI를 활용하고 싶은 현업 창작자와 예비 창작자(취·창업 준비생, 대학생 등) 모두 지원할 수 있습니다. 초반 회차에서 AI 기초 개념부터 함께 다루니, 처음 접하시는 분도 부담 없이 따라오실 수 있습니다. 다만 본 교육은 노트북으로 다양한 AI 도구와 편집 프로그램을 직접 다루는 실습 위주로 진행됩니다. 컴퓨터 사용이나 기본적인 웹 브라우저·파일 관리에 익숙하지 않으신 분은 수업을 따라가시기 어려울 수 있으니 참고해 주시기 바랍니다.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>온라인으로 수강할 수 있나요?</summary>
-            <p>오프라인 교육이 중심입니다. </p>
+            <summary>Q4. 온라인으로 수강할 수 있나요?</summary>
+            <p>본 교육은 100% 오프라인으로 진행되며, 별도의 온라인 수강은 제공되지 않습니다. 모든 회차는 제주대학교에서 운영됩니다.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>여러 트랙 또는 타 기관 교육과 중복 참여가 가능한가요?</summary>
-            <p>교육생은 1개 트랙에만 참여할 수 있습니다. 본인의 일정과 참여 목적에 가장 적합한 트랙 1개를 선택하여 신청해주시기 바랍니다. 또한 동일 사업 내 타 기관 교육과 동시에 선발될 경우, 중복 참여가 제한될 수 있으며 하나의 과정(트랙)을 선택하여 등록해주셔야 합니다.
-            </p>
+            <summary>Q5. 여러 회차 또는 타 기관 교육과 중복 참여가 가능한가요?</summary>
+            <p>교육생은 5개 회차 중 1개에만 참여할 수 있습니다. 본인의 일정과 학습 목적에 가장 적합한 회차 1개를 선택해 신청해 주시기 바랍니다. 또한 동일 사업 내 타 기관 교육과 동시에 선발될 경우 중복 참여가 제한될 수 있으며, 하나의 과정을 선택하여 등록하셔야 합니다.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>수료 기준은 어떻게 되나요?</summary>
-            <p>전체 교육 시간의 <strong>70% 이상 이수, 프로젝트 제출</strong>가 기본 기준입니다.</p>
+            <summary>Q6. 수료 기준은 어떻게 되나요?</summary>
+            <p>출석률 70% 이상과 프로젝트 1건 이상 제출이 기본 기준입니다. 두 조건을 모두 충족하셔야 수료가 인정되며, 수료 시 AI 구독료가 지원됩니다.</p>
           </details>
 
           <details class="lp-faq__item">
-            <summary>어떤 결과물을 만들 수 있나요?</summary>
-            <p>3D 캐릭터 1종, 콘텐츠 기획 문서, AI 이미지·카드뉴스, 그리고 최종 포트폴리오로 15~60초 분량의 AI 숏폼 영상을 제작합니다. 마지막 차시에서는 제주 로컬 콘텐츠 기업 실무진의 직접 피드백을 받을 수 있습니다.</p>
+            <summary>Q7. 어떤 결과물을 만들 수 있나요?</summary>
+            <p>교육 기간 동안 미니 프로젝트와 최종 프로젝트를 제작합니다. 최종 산출물은 15~60초 분량의 AI 숏폼 콘텐츠이며, AI 생성 이미지·영상, 음성(TTS) 또는 BGM, 자막, 썸네일이 포함됩니다.</p>
+          </details>
+
+          <details class="lp-faq__item">
+            <summary>Q8. 노트북은 어떤 사양이 필요한가요?</summary>
+            <p>본 교육은 본인의 노트북으로 실습이 진행됩니다. 수업 중에는 주로 웹 기반 AI 도구(ChatGPT·Gemini·Kling AI·Suno 등)와 CapCut·Canva를 활용합니다. 별도의 고사양 프로그램 설치 없이 대부분 웹 브라우저에서 진행되므로, 위 도구들이 무리 없이 실행되고 인터넷이 원활하게 연결되는 노트북이라면 충분합니다. 평소 사용하시는 노트북으로 영상 시청과 간단한 영상 편집(CapCut 등)이 가능한 수준이면 문제없이 수업에 참여하실 수 있습니다.</p>
+          </details>
+
+          <details class="lp-faq__item">
+            <summary>Q9. 제주대학교 주차는 가능한가요?</summary>
+            <p>제주대학교 내 주차 공간은 이용 가능하지만, 주차 비용은 별도로 지원되지 않습니다. 캠퍼스 내 유료 주차장을 이용하실 경우 본인 부담으로 운영됩니다. 대중교통이나 도보 이용을 권장드리며, 차량 이용을 원하시는 경우 시간·요금 등은 제주대학교 홈페이지에서 사전에 확인해 주세요.</p>
           </details>
 
         </div>
@@ -603,12 +555,11 @@
   <footer class="lp-footer">
     <div class="max-width lp-footer__inner">
       <div>
-        <div class="lp-footer__brand">JEJU AI Creators</div>
-        <div class="lp-footer__row">2026 AI특화 콘텐츠 창작자 양성 · 한국콘텐츠진흥원(KOCCA) 지원사업</div>
+        <div class="lp-footer__brand">제주관광 부스트업 AI 콘텐츠 창작소</div>
+        <div class="lp-footer__row">문화체육관광부 · 한국콘텐츠진흥원 · 제주대학교 산학협력단 · 주식회사 위니브</div>
       </div>
       <div class="lp-footer__row">
-        <div>문의: paul-lab@naver.com</div>
-        <div>© 2026 JEJU AI Creators Program</div>
+        <div>© 2026 제주관광 부스트업 AI 콘텐츠 창작소</div>
       </div>
     </div>
   </footer>
@@ -661,408 +612,167 @@
     })();
   </script>
 
-  <!-- =============== HERO 3D SCENE — 작은 별의 어린 왕자 =============== -->
-  <script type="module">
-    import * as THREE from 'three';
-    import {
-      makePalmTree,
-      makeTangerine,
-      makeDolharubang,
-      loadLycat,
-    } from './style/3d/index.js';
+  <!-- =============== HERO 3D SCENE — 제거됨 (우측 영역에 추후 3D 이미지 인터랙션 추가 예정) =============== -->
+  <!-- =============== SCHEDULE CALENDAR — 2026.05 ~ 2026.10 월별 네비 =============== -->
+  <script>
+    (function () {
+      const monthEl = document.getElementById('lp-cal-month');
+      const gridEl  = document.getElementById('lp-cal-grid');
+      const prevBtn = document.querySelector('[data-cal-nav="prev"]');
+      const nextBtn = document.querySelector('[data-cal-nav="next"]');
+      if (!monthEl || !gridEl || !prevBtn || !nextBtn) return;
 
-    const canvas = document.querySelector('#hero-canvas');
-    if (!canvas) { /* no-op */ } else {
-      const container = canvas.parentElement;
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // 표시 가능한 달: 2026년 5월 ~ 10월
+      const months = [6, 7, 8, 9, 10];
+      const YEAR = 2026;
+      let idx = 0;
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-      camera.position.set(0, 0.6, 7);
+      // 2026년 5~10월 공휴일
+      const holidays = {
+        '5-5': '어린이날',
+        '5-25': '부처님오신날 대체공휴일',
+        '6-3': '지방선거',
+        '6-6': '현충일',
+        '7-17': '제헌절',
+        '8-15': '광복절',
+        '8-17': '광복절 대체공휴일',
+        '9-24': '추석 연휴',
+        '9-25': '추석',
+        '9-26': '추석 연휴',
+        '10-3': '개천절',
+        '10-5': '개천절 대체공휴일',
+        '10-9': '한글날',
+      };
 
-      const renderer = new THREE.WebGLRenderer({
-        canvas, antialias: true, alpha: true,
-        powerPreference: 'high-performance',
-      });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.05;
+      // 교육 일정 — t1~t5 = 트랙 색상 클래스
+      const events = {
+        // ── 1회차 A트랙 주말반 (고재훈, 토일 13~18) ──
+        '6-13':[{t:'t1',l:'1회차(1)'}],'6-14':[{t:'t1',l:'1회차(2)'}],
+        '6-20':[{t:'t1',l:'1회차(3)'}],'6-21':[{t:'t1',l:'1회차(4)'}],
+        '6-27':[{t:'t1',l:'1회차(5)'}],'6-28':[{t:'t1',l:'1회차(6)'}],
+        '7-4':[{t:'t1',l:'1회차(7)'},{t:'t2',l:'2회차(1)'}],
+        '7-5':[{t:'t1',l:'1회차(8)'},{t:'t2',l:'2회차(2)'}],
+        '7-11':[{t:'t1',l:'1회차(9)'},{t:'t2',l:'2회차(3)'}],
+        '7-12':[{t:'t1',l:'1회차(10)'},{t:'t2',l:'2회차(4)'}],
+        '7-18':[{t:'t1',l:'1회차(11)'},{t:'t2',l:'2회차(5)'}],
+        '7-19':[{t:'t1',l:'1회차(12)'},{t:'t2',l:'2회차(6)'}],
+        '7-25':[{t:'t1',l:'1회차(13)'},{t:'t2',l:'2회차(7)'}],
+        '7-26':[{t:'t1',l:'1회차(14)'},{t:'t2',l:'2회차(8)'}],
+        '8-1':[{t:'t1',l:'1회차(15)★'},{t:'t2',l:'2회차(9)'}],
+        // ── 2회차 B트랙 주말반 (이희지, 토일 13~18) ──
+        '8-2':[{t:'t2',l:'2회차(10)'}],
+        '8-8':[{t:'t2',l:'2회차(11)'}],'8-9':[{t:'t2',l:'2회차(12)'}],
+        '8-22':[{t:'t2',l:'2회차(13)'},{t:'t5',l:'5회차(1)'}],
+        '9-5':[{t:'t2',l:'2회차(14)'},{t:'t5',l:'5회차(5)'}],
+        '9-6':[{t:'t2',l:'2회차(15)★'},{t:'t5',l:'5회차(6)'}],
+        // ── 3회차 B트랙 평일저녁반 (이희지, 월화 19~22) ──
+        '7-6':[{t:'t3',l:'3회차(1)'}],'7-7':[{t:'t3',l:'3회차(2)'}],
+        '7-13':[{t:'t3',l:'3회차(3)'}],'7-14':[{t:'t3',l:'3회차(4)'}],
+        '7-20':[{t:'t3',l:'3회차(5)'}],'7-21':[{t:'t3',l:'3회차(6)'}],
+        '7-27':[{t:'t3',l:'3회차(7)'}],'7-28':[{t:'t3',l:'3회차(8)'}],
+        '8-3':[{t:'t3',l:'3회차(9)'}],'8-4':[{t:'t3',l:'3회차(10)'}],
+        '8-10':[{t:'t3',l:'3회차(11)'}],'8-11':[{t:'t3',l:'3회차(12)'}],
+        '8-18':[{t:'t3',l:'3회차(13)'}],
+        '8-24':[{t:'t3',l:'3회차(14)'}],'8-25':[{t:'t3',l:'3회차(15)'}],
+        '8-31':[{t:'t3',l:'3회차(16)'}],
+        '9-1':[{t:'t3',l:'3회차(17)'}],
+        '9-7':[{t:'t3',l:'3회차(18)'}],'9-8':[{t:'t3',l:'3회차(19)'}],
+        '9-14':[{t:'t3',l:'3회차(20)'}],'9-15':[{t:'t3',l:'3회차(21)'}],
+        '9-21':[{t:'t3',l:'3회차(22)'}],'9-22':[{t:'t3',l:'3회차(23)'}],
+        '9-28':[{t:'t3',l:'3회차(24)'}],'9-29':[{t:'t3',l:'3회차(25)★'}],
+        // ── 4회차 A트랙 평일반 (김윤영, 목금 13~18) ──
+        '7-9':[{t:'t4',l:'4회차(1)'}],'7-10':[{t:'t4',l:'4회차(2)'}],
+        '7-16':[{t:'t4',l:'4회차(3)'}],
+        '7-23':[{t:'t4',l:'4회차(4)'}],'7-24':[{t:'t4',l:'4회차(5)'}],
+        '7-30':[{t:'t4',l:'4회차(6)'}],'7-31':[{t:'t4',l:'4회차(7)'}],
+        '8-6':[{t:'t4',l:'4회차(8)'}],'8-7':[{t:'t4',l:'4회차(9)'}],
+        '8-13':[{t:'t4',l:'4회차(10)'}],'8-14':[{t:'t4',l:'4회차(11)'}],
+        '8-27':[{t:'t4',l:'4회차(12)'}],'8-28':[{t:'t4',l:'4회차(13)'}],
+        '9-3':[{t:'t4',l:'4회차(14)'}],'9-4':[{t:'t4',l:'4회차(15)★'}],
+        // ── 5회차 A트랙 주말반 (고재훈, 토일 13~18) ──
+        '8-23':[{t:'t5',l:'5회차(2)'}],
+        '8-29':[{t:'t5',l:'5회차(3)'}],'8-30':[{t:'t5',l:'5회차(4)'}],
+        '9-12':[{t:'t5',l:'5회차(7)'}],'9-13':[{t:'t5',l:'5회차(8)'}],
+        '9-19':[{t:'t5',l:'5회차(9)'}],'9-20':[{t:'t5',l:'5회차(10)'}],
+        '10-10':[{t:'t5',l:'5회차(11)'}],'10-11':[{t:'t5',l:'5회차(12)'}],
+        '10-17':[{t:'t5',l:'5회차(13)'}],'10-18':[{t:'t5',l:'5회차(14)'}],
+        '10-24':[{t:'t5',l:'5회차(15)★'}],
+      };
 
-      function resize() {
-        const w = container.clientWidth || 1;
-        const h = container.clientHeight || 1;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h, false);
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      // ---------- 라이팅 (부드럽고 균일하게) ----------
-      scene.add(new THREE.HemisphereLight(0xfff4e8, 0xc8d4ee, 0.95));
-      const sun = new THREE.DirectionalLight(0xffefdc, 0.35);
-      sun.position.set(3, 4, 4);
-      scene.add(sun);
-
-      // ---------- 행성 그룹 ----------
-      const planetGroup = new THREE.Group();
-      scene.add(planetGroup);
-
-      // 모바일(<=900px)에서는 행성 시스템을 축소해 본문 가독성 확보
-      function applyPlanetScale() {
-        planetGroup.scale.setScalar(window.innerWidth <= 900 ? 0.65 : 1);
-      }
-      applyPlanetScale();
-      window.addEventListener('resize', applyPlanetScale);
-
-      const R = 1.4;
-      const planet = new THREE.Mesh(
-        new THREE.SphereGeometry(R, 64, 64),
-        new THREE.MeshStandardMaterial({ color: 0x86cc99, roughness: 0.85 })
-      );
-      planetGroup.add(planet);
-
-      // 작은 집 + 굴뚝
-      const house = new THREE.Group();
-      house.add(new THREE.Mesh(
-        new THREE.BoxGeometry(0.34, 0.26, 0.34),
-        new THREE.MeshStandardMaterial({ color: 0xfff1d6, roughness: 0.7 })
-      ));
-      const roof = new THREE.Mesh(
-        new THREE.ConeGeometry(0.3, 0.22, 4),
-        new THREE.MeshStandardMaterial({ color: 0xe76b6b, roughness: 0.6 })
-      );
-      roof.position.y = 0.24;
-      roof.rotation.y = Math.PI / 4;
-      house.add(roof);
-      const chimney = new THREE.Mesh(
-        new THREE.BoxGeometry(0.06, 0.14, 0.06),
-        new THREE.MeshStandardMaterial({ color: 0xa05050 })
-      );
-      chimney.position.set(0.08, 0.34, -0.08);
-      house.add(chimney);
-      // 행성 대비 집 비율 살짝 축소
-      // 행성은 구면이라 바닥(평면) 모서리에 틈이 생겨 떠 보임 → houseSink만큼 표면 안쪽으로 박아 자연스럽게 안착시킴
-      const houseScale = 0.7;
-      const houseSink = 0.05;
-      house.scale.setScalar(houseScale);
-      house.position.set(0, R + 0.13 * houseScale - houseSink, 0);
-      planet.add(house);
-
-      // 굴뚝 연기 (모락모락)
-      const smokes = [];
-      for (let i = 0; i < 3; i++) {
-        const s = new THREE.Mesh(
-          new THREE.SphereGeometry(0.05, 8, 8),
-          new THREE.MeshStandardMaterial({ color: 0xeef0f5, transparent: true, opacity: 0.85 })
-        );
-        s.userData = { phase: i * 0.5 };
-        house.add(s);
-        smokes.push(s);
+      // 날짜에 이미 다른 키에서 추가된 이벤트가 있으면 병합
+      function getEvents(month, day) {
+        var key = month + '-' + day;
+        return events[key] || [];
       }
 
-      // ---------- 행성 표면 오브제 (/threejs/src/mesh + Lycat GLB) ----------
-      // /threejs 의 원본 오브제를 그대로 import 해서 사용. 행성이 작으므로 mountToPlanet 으로
-      // (1) 원하는 목표 높이로 균일 스케일, (2) 바닥(min.y)을 0 으로 보정,
-      // (3) 표면 법선과 정렬해 lat/lng 위치에 부착.
-      function mountToPlanet(rawObj, { lat, lng, targetSize = 0.5, sink = 0, yaw = 0 }) {
-        // 1) 정규화된 크기로 스케일링 (월드 bbox 의 가장 긴 변 기준)
-        const preBox = new THREE.Box3().setFromObject(rawObj);
-        const preSize = new THREE.Vector3();
-        preBox.getSize(preSize);
-        const longest = Math.max(preSize.x, preSize.y, preSize.z) || 1;
-        rawObj.scale.multiplyScalar(targetSize / longest);
+      function render() {
+        const month = months[idx];
+        monthEl.textContent = `${YEAR}년 ${month}월`;
 
-        // 2) 다시 bbox 계산 → 바닥(min.y) 이 0 이 되도록 위로 들어올림
-        rawObj.updateMatrixWorld(true);
-        const box = new THREE.Box3().setFromObject(rawObj);
-        rawObj.position.y -= box.min.y;
+        const firstWeekday = new Date(YEAR, month - 1, 1).getDay();
+        const daysInMonth = new Date(YEAR, month, 0).getDate();
 
-        // 3) wrapper 의 원점을 행성 표면점에 두고 표면 법선과 정렬
-        const wrapper = new THREE.Group();
-        wrapper.add(rawObj);
-
-        const r = R - sink;
-        const phi = THREE.MathUtils.degToRad(lat);
-        const theta = THREE.MathUtils.degToRad(lng);
-        const p = new THREE.Vector3(
-          r * Math.sin(phi) * Math.cos(theta),
-          r * Math.cos(phi),
-          r * Math.sin(phi) * Math.sin(theta)
-        );
-        wrapper.position.copy(p);
-        const q = new THREE.Quaternion().setFromUnitVectors(
-          new THREE.Vector3(0, 1, 0), p.clone().normalize()
-        );
-        if (yaw) {
-          q.multiply(new THREE.Quaternion().setFromAxisAngle(
-            new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(yaw)
-          ));
+        const cells = [];
+        for (let i = 0; i < firstWeekday; i++) {
+          cells.push('<div class="lp-calendar__day lp-calendar__day--empty" aria-hidden="true"></div>');
         }
-        wrapper.quaternion.copy(q);
-        return wrapper;
-      }
-
-      // 야자수 5그루 (행성 곳곳에 산재)
-      planet.add(mountToPlanet(makePalmTree(), { lat: 62,  lng: 35,   targetSize: 0.475, sink: 0.03 }));
-      planet.add(mountToPlanet(makePalmTree(), { lat: 118, lng: 200,  targetSize: 0.425, sink: 0.03, yaw: 40 }));
-      planet.add(mountToPlanet(makePalmTree(), { lat: 50,  lng: -150, targetSize: 0.45,  sink: 0.03, yaw: -20 }));
-      planet.add(mountToPlanet(makePalmTree(), { lat: 95,  lng: 250,  targetSize: 0.40,  sink: 0.03, yaw: 60 }));
-      planet.add(mountToPlanet(makePalmTree(), { lat: 145, lng: 60,   targetSize: 0.46,  sink: 0.03, yaw: 110 }));
-
-      // 감귤(한라봉) 8개 — 야자수 사이사이에 작게 흩뿌리기
-      planet.add(mountToPlanet(makeTangerine(), { lat: 45,  lng: 150,  targetSize: 0.16, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 130, lng: 80,   targetSize: 0.14, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 95,  lng: 280,  targetSize: 0.15, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 30,  lng: -50,  targetSize: 0.13, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 60,  lng: 320,  targetSize: 0.15, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 110, lng: 180,  targetSize: 0.14, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 150, lng: 10,   targetSize: 0.16, sink: 0.01 }));
-      planet.add(mountToPlanet(makeTangerine(), { lat: 35,  lng: 220,  targetSize: 0.13, sink: 0.01 }));
-
-      // 캐릭터 ① 돌하르방 — 집 왼편(감귤 lat30/lng-50 회피)
-      planet.add(mountToPlanet(makeDolharubang(), { lat: 35, lng: -95, targetSize: 0.275, sink: 0.02, yaw: 70 }));
-
-      // 캐릭터 ② 라이캣 (GLB) — 집 오른편 (비동기 로드)
-      loadLycat().then((model) => {
-        planet.add(mountToPlanet(model, { lat: 28, lng: 55, targetSize: 0.275, sink: 0.02, yaw: -50 }));
-      });
-
-      // ---------- 새턴 링 2겹 ----------
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(1.95, 0.04, 8, 80),
-        new THREE.MeshBasicMaterial({ color: 0xa8c4ff, transparent: true, opacity: 0.55 })
-      );
-      ring.rotation.set(Math.PI * 0.42, 0, Math.PI * 0.08);
-      planetGroup.add(ring);
-
-      const ring2 = new THREE.Mesh(
-        new THREE.TorusGeometry(2.18, 0.018, 6, 80),
-        new THREE.MeshBasicMaterial({ color: 0xc8d8ff, transparent: true, opacity: 0.35 })
-      );
-      ring2.rotation.set(Math.PI * 0.42, 0, Math.PI * 0.08);
-      planetGroup.add(ring2);
-
-      // ---------- 분화구 달 (궤도) ----------
-      const moonPivot = new THREE.Group();
-      moonPivot.rotation.z = Math.PI * 0.18;
-      planetGroup.add(moonPivot);
-
-      const moon = new THREE.Mesh(
-        new THREE.SphereGeometry(0.22, 24, 24),
-        new THREE.MeshStandardMaterial({ color: 0xc8d2ec, roughness: 0.8 })
-      );
-      moon.position.set(2.45, 0, 0);
-      moonPivot.add(moon);
-
-      // ---------- 떠다니는 구름 ----------
-      const clouds = [];
-      function makeCloud(scale) {
-        const c = new THREE.Group();
-        const mat = new THREE.MeshStandardMaterial({
-          color: 0xffffff, roughness: 0.95, transparent: true, opacity: 0.95,
-          emissive: 0xe9eef8, emissiveIntensity: 0.45,
-        });
-        for (let j = 0; j < 5; j++) {
-          const puff = new THREE.Mesh(
-            new THREE.SphereGeometry((0.18 + Math.random() * 0.12) * scale, 12, 12),
-            mat
+        for (let d = 1; d <= daysInMonth; d++) {
+          const key = `${month}-${d}`;
+          const hol = holidays[key];
+          const dayEvents = getEvents(month, d);
+          const holClass = hol ? ' lp-calendar__day--holiday' : '';
+          const hasEvent = dayEvents.length ? ' lp-calendar__day--has-event' : '';
+          const holMarker = hol ? `<span class="lp-calendar__holiday">${hol}</span>` : '';
+          let evMarkers = '';
+          for (let i = 0; i < dayEvents.length; i++) {
+            evMarkers += `<span class="lp-calendar__event lp-calendar__event--${dayEvents[i].t}">${dayEvents[i].l}</span>`;
+          }
+          cells.push(
+            `<div class="lp-calendar__day${holClass}${hasEvent}" role="gridcell">` +
+              `<span class="lp-calendar__date">${d}</span>` +
+              holMarker + evMarkers +
+            `</div>`
           );
-          puff.position.set((j - 2) * 0.18 * scale, Math.random() * 0.04, 0);
-          c.add(puff);
         }
-        return c;
-      }
-      for (let i = 0; i < 5; i++) {
-        const c = makeCloud(0.85 + Math.random() * 0.45);
-        c.userData = {
-          radius: 1.85 + Math.random() * 0.4,
-          theta: Math.random() * Math.PI * 2,
-          speed: (0.0015 + Math.random() * 0.001) * (Math.random() < 0.5 ? -1 : 1),
-          tilt: (Math.random() - 0.5) * 0.7,
-        };
-        planetGroup.add(c);
-        clouds.push(c);
-      }
-
-      // ---------- 분위기 글로우 (행성 뒷면 hue) ----------
-      const halo = new THREE.Mesh(
-        new THREE.SphereGeometry(R * 1.18, 32, 32),
-        new THREE.MeshBasicMaterial({
-          color: 0x8fb6ff, transparent: true, opacity: 0.2,
-          side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false,
-        })
-      );
-      planetGroup.add(halo);
-
-      // ---------- 떠다니는 브랜드 스파클 ----------
-      const sparkleCount = 140;
-      const sparkleGeo = new THREE.BufferGeometry();
-      const sparklePos = new Float32Array(sparkleCount * 3);
-      for (let i = 0; i < sparkleCount; i++) {
-        const r = 3.2 + Math.random() * 3.8;
-        const t = Math.random() * Math.PI * 2;
-        const p = Math.acos(2 * Math.random() - 1);
-        sparklePos[i*3]     = r * Math.sin(p) * Math.cos(t);
-        sparklePos[i*3 + 1] = r * Math.sin(p) * Math.sin(t) * 0.5;
-        sparklePos[i*3 + 2] = r * Math.cos(p);
-      }
-      sparkleGeo.setAttribute('position', new THREE.BufferAttribute(sparklePos, 3));
-      const sparkleMat = new THREE.PointsMaterial({
-        color: 0x6c9bff, size: 0.11, transparent: true, opacity: 0.95,
-        blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true,
-      });
-      const sparkles = new THREE.Points(sparkleGeo, sparkleMat);
-      scene.add(sparkles);
-
-      // ---------- 포인터 인터랙션: 클릭 드래그 회전(관성) + 줌 ----------
-      let pulse = 0;
-      let isDragging = false;
-      let lastPointerX = 0, lastPointerY = 0;
-      let dragVelY = 0, dragVelX = 0;     // 드래그 종료 후 관성용 (Y/X축 회전 속도)
-      const ROT_SPEED = Math.PI * 2;      // 캔버스 한 변(=1.0)을 드래그하면 약 360°
-      const TILT_LIMIT = 1.1;             // x축 기울임 클램프 (라디안)
-
-      // 줌 상태 — 카메라의 Z 거리
-      const ZOOM_BASE = 7;
-      const ZOOM_MIN = 3.5;
-      const ZOOM_MAX = 11;
-      const ZOOM_STEP = 0.9;
-      let zoomDistance = ZOOM_BASE;
-
-      function onPointerDown(e) {
-        isDragging = true;
-        pulse = 1.0;
-        lastPointerX = e.clientX;
-        lastPointerY = e.clientY;
-        dragVelX = 0; dragVelY = 0;
-        if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
-      }
-      function onPointerMove(e) {
-        if (!isDragging) return;
-        const rect = container.getBoundingClientRect();
-        const dx = (e.clientX - lastPointerX) / rect.width;
-        const dy = (e.clientY - lastPointerY) / rect.height;
-        const rotY = dx * ROT_SPEED;
-        const rotX = dy * ROT_SPEED * 0.7;
-        planetGroup.rotation.y += rotY;
-        planetGroup.rotation.x = THREE.MathUtils.clamp(
-          planetGroup.rotation.x + rotX, -TILT_LIMIT, TILT_LIMIT
-        );
-        dragVelY = rotY;
-        dragVelX = rotX;
-        lastPointerX = e.clientX;
-        lastPointerY = e.clientY;
-      }
-      function onPointerUp(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        if (canvas.releasePointerCapture && e && e.pointerId !== undefined) {
-          try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
-        }
-      }
-      // 드래그/줌은 캔버스에만 부착 → 줌 버튼 클릭과 충돌 방지
-      canvas.addEventListener('pointerdown', onPointerDown);
-      canvas.addEventListener('pointermove', onPointerMove);
-      canvas.addEventListener('pointerup', onPointerUp);
-      canvas.addEventListener('pointercancel', onPointerUp);
-
-      // 휠 줌 (캔버스 위에서만 동작 → 일반 페이지 스크롤 방해 X)
-      canvas.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const dir = Math.sign(e.deltaY);
-        zoomDistance = THREE.MathUtils.clamp(
-          zoomDistance + dir * 0.4, ZOOM_MIN, ZOOM_MAX
-        );
-      }, { passive: false });
-
-      // 줌 버튼
-      container.querySelectorAll('.lp-hero__zoom-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const dir = btn.dataset.zoom === 'in' ? -1 : 1;
-          zoomDistance = THREE.MathUtils.clamp(
-            zoomDistance + dir * ZOOM_STEP, ZOOM_MIN, ZOOM_MAX
-          );
-        });
-      });
-
-      let visible = true;
-      const io = new IntersectionObserver(([entry]) => {
-        visible = entry.isIntersecting;
-      }, { threshold: 0.01 });
-      io.observe(canvas);
-
-      // ---------- 애니메이션 루프 ----------
-      const clock = new THREE.Clock();
-      function animate() {
-        requestAnimationFrame(animate);
-        if (!visible) return;
-
-        const t = clock.getElapsedTime();
-        pulse *= 0.94;
-        const speed = reduceMotion ? 0 : 1 + pulse * 1.5;
-
-        // 드래그 종료 후 관성으로 잠시 더 회전 → 자연스러운 손맛
-        if (!isDragging && !reduceMotion) {
-          if (Math.abs(dragVelY) > 0.0001 || Math.abs(dragVelX) > 0.0001) {
-            planetGroup.rotation.y += dragVelY;
-            planetGroup.rotation.x = THREE.MathUtils.clamp(
-              planetGroup.rotation.x + dragVelX, -TILT_LIMIT, TILT_LIMIT
-            );
-            dragVelY *= 0.92;
-            dragVelX *= 0.92;
+        // 마지막 주를 7칸으로 채우는 빈 칸
+        const total = cells.length;
+        const rem = total % 7;
+        if (rem !== 0) {
+          for (let i = 0; i < 7 - rem; i++) {
+            cells.push('<div class="lp-calendar__day lp-calendar__day--empty" aria-hidden="true"></div>');
           }
         }
 
-        if (!reduceMotion) {
-          planet.rotation.y += 0.0035 * speed;
+        gridEl.innerHTML = cells.join('');
 
-          ring.rotation.z += 0.0008 * speed;
-          ring2.rotation.z -= 0.0006 * speed;
-
-          moonPivot.rotation.y += 0.006 * speed;
-          moon.rotation.y += 0.012 * speed;
-
-          clouds.forEach(c => {
-            c.userData.theta += c.userData.speed * speed;
-            const r = c.userData.radius;
-            c.position.set(
-              Math.cos(c.userData.theta) * r,
-              Math.sin(c.userData.tilt) * r * 0.4,
-              Math.sin(c.userData.theta) * r
-            );
-            c.lookAt(0, 0, 0);
-          });
-
-          smokes.forEach(s => {
-            const phase = (t * 0.7 + s.userData.phase) % 1.5;
-            s.position.set(
-              0.08 + Math.sin(phase * 4) * 0.015,
-              0.42 + phase * 0.18,
-              -0.08 + Math.cos(phase * 4) * 0.015
-            );
-            const fadeIn = Math.min(phase * 4, 1);
-            s.material.opacity = 0.85 * fadeIn * (1 - phase / 1.5);
-            s.scale.setScalar(1 + phase * 0.5);
-          });
-
-          sparkles.rotation.y += 0.0008;
-          sparkleMat.opacity = 0.78 + Math.sin(t * 1.4) * 0.18;
-
-          halo.scale.setScalar(1 + Math.sin(t * 0.8) * 0.02 + pulse * 0.04);
-        }
-
-        // 카메라는 고정, 줌만 거리(z)로 부드럽게 보간
-        camera.position.x = 0;
-        camera.position.z += (zoomDistance - camera.position.z) * 0.12;
-        camera.position.y = 0.6;
-        camera.lookAt(0, 0.2, 0);
-
-        renderer.render(scene, camera);
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === months.length - 1;
       }
-      animate();
-    }
+
+      prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+      nextBtn.addEventListener('click', () => { if (idx < months.length - 1) { idx++; render(); } });
+
+      render();
+    })();
+  </script>
+
+  <!-- =============== 헤더 스크롤 상태 — 히어로 영역 안: 투명 / 벗어남: 솔리드 =============== -->
+  <script>
+    (function () {
+      const header = document.querySelector('.lp-header');
+      const hero = document.querySelector('.lp-hero');
+      if (!header || !hero || !('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        // 히어로의 하단이 헤더 아래로 내려가면(=intersecting) 투명, 벗어나면 솔리드
+        header.classList.toggle('lp-header--transparent', entry.isIntersecting);
+      }, {
+        // 뷰포트 상단을 헤더 높이(72px)만큼 안쪽으로 줄여서 히어로 하단이 헤더 아래로 사라지는 순간 트리거
+        rootMargin: '-72px 0px 0px 0px',
+        threshold: 0,
+      });
+      observer.observe(hero);
+    })();
   </script>
 
   <!-- =============== PORTFOLIO 3D SCENE — 학습 결과물 데모 (lazy init) =============== -->

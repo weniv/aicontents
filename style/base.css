@@ -22,6 +22,7 @@ body {
   color: var(--surface);
   background-color: var(--background);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* 시각적으로는 숨기되 스크린 리더에는 노출 (라벨, h1 등에 사용) */
@@ -73,9 +74,12 @@ body {
   word-break: break-all;
 }
 
-/* 본문 안의 강조 텍스트 (브랜드 컬러) */
+/* 본문 안의 강조 텍스트 — 라임 배경 + 검정 텍스트 (포스터 키비주얼) */
 .txt-highlight {
   font-weight: 700;
-  color: var(--primary);
-  background: transparent;
+  color: var(--surface);
+  background: var(--primary);
+  padding: 0 .15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }

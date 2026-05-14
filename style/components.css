@@ -54,7 +54,7 @@
 }
 
 .btn--primary {
-  color: var(--background);
+  color: var(--primary-text);
   background: var(--primary);
 }
 .btn--primary:hover {
@@ -154,7 +154,7 @@
   padding: 0;
   margin: 1.2rem auto;
   height: 3.2rem;
-  color: var(--primary);
+  color: var(--primary-a11y);
 }
 .quote::before {
   display: block;
