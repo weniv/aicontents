@@ -756,22 +756,34 @@
     })();
   </script>
 
-  <!-- =============== 헤더 스크롤 상태 — 히어로 영역 안: 투명 / 벗어남: 솔리드 =============== -->
+  <!-- =============== 헤더 스크롤 상태 — 배지가 헤더에 닿기 전: 투명 / 닿으면: 솔리드 =============== -->
   <script>
     (function () {
       const header = document.querySelector('.lp-header');
-      const hero = document.querySelector('.lp-hero');
-      if (!header || !hero || !('IntersectionObserver' in window)) return;
+      const badge = document.querySelector('.lp-hero__badge');
+      if (!header || !badge) return;
 
-      const observer = new IntersectionObserver(([entry]) => {
-        // 히어로의 하단이 헤더 아래로 내려가면(=intersecting) 투명, 벗어나면 솔리드
-        header.classList.toggle('lp-header--transparent', entry.isIntersecting);
-      }, {
-        // 뷰포트 상단을 헤더 높이(72px)만큼 안쪽으로 줄여서 히어로 하단이 헤더 아래로 사라지는 순간 트리거
-        rootMargin: '-72px 0px 0px 0px',
-        threshold: 0,
-      });
-      observer.observe(hero);
+      const BUFFER = 16; // 겹치기 직전에 미리 전환되도록 여유
+      let ticking = false;
+
+      const update = () => {
+        const headerHeight = header.offsetHeight || 72;
+        const badgeTop = badge.getBoundingClientRect().top;
+        // 배지 윗변이 헤더 아래쪽(+버퍼)에 닿으면 솔리드 헤더로 전환
+        const overlapping = badgeTop <= headerHeight + BUFFER;
+        header.classList.toggle('lp-header--transparent', !overlapping);
+        ticking = false;
+      };
+
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
     })();
   </script>
 
