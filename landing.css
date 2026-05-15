@@ -190,7 +190,7 @@ html {
 }
 .lp-hero__title {
   font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
-  font-size: clamp(3.4rem, 5.4vw, 6.4rem);
+  font-size: clamp(3.4rem, 5vw, 6.4rem);
   font-weight: 700;
   line-height: 1.18;
   letter-spacing: -.025em;
