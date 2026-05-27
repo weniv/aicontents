@@ -584,6 +584,9 @@ html {
   cursor: not-allowed;
   pointer-events: none;
 }
+.lp-track__apply[aria-disabled="true"].lp-track__apply--closed {
+  color: var(--grayLv2-darken);
+}
 @media (max-width: 740px) {
   .lp-track { padding: 2.4rem 2rem; }
   .lp-track__name { font-size: 1.7rem; }
