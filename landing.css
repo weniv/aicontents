@@ -1460,67 +1460,129 @@ html {
   .lp-hero { padding: 14rem 0 10rem; }
 }
 
-/* -------- AI 페스티벌 시연자 명단 발표 배너 -------- */
-.lp-festival {
-  padding: 9rem 0;
+/* -------- 모달: AI 페스티벌 시연자 명단 발표 -------- */
+.lp-modal--festival .lp-modal__panel {
+  width: min(96rem, 100%);
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 3.2rem 2.8rem;
   background: var(--surface);
   color: var(--surface-text);
 }
-.lp-festival .lp-eyebrow { color: var(--primary); }
-.lp-festival .lp-section__desc { color: var(--grayLv2); word-break: keep-all; }
+.lp-festival .lp-eyebrow { color: var(--primary); margin-bottom: .8rem; }
+.lp-festival__x {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  width: 4rem;
+  height: 4rem;
+  border: 0;
+  background: none;
+  color: var(--grayLv3);
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lp-festival__x:hover { color: var(--surface-text); }
+.lp-festival__title {
+  font-family: 'Giants', 'Pretendard', 'Pretendard Fallback', sans-serif;
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  margin-bottom: 1.2rem;
+  word-break: keep-all;
+}
+.lp-festival__desc {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--grayLv2);
+  word-break: keep-all;
+  margin-bottom: 2.4rem;
+}
+.lp-festival__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  text-align: left;
+}
 .lp-festival__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.6rem;
+  gap: 1.2rem;
 }
 .lp-festival__item {
   display: flex;
   flex-direction: column;
-  gap: .6rem;
-  padding: 2rem 2.2rem;
-  border-radius: 1.6rem;
+  gap: .4rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 1.4rem;
   background: var(--surface-lighten);
   border: 1px solid rgba(255, 255, 255, .08);
 }
 .lp-festival__no {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary);
   letter-spacing: .05em;
 }
 .lp-festival__name {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 .lp-festival__name span {
   margin-left: .4rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--grayLv3);
 }
 .lp-festival__work {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.5;
   color: var(--grayLv2);
   word-break: keep-all;
   overflow-wrap: break-word;
 }
 .lp-festival__note {
-  margin-top: 2.8rem;
+  margin-top: 1.6rem;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--grayLv3);
 }
+.lp-festival__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+.lp-festival__today {
+  flex: 0 0 auto;
+  border: 0;
+  background: none;
+  color: var(--grayLv3);
+  font-size: 1.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.lp-festival__today:hover { color: var(--surface-text); }
+.lp-festival__actions .lp-modal__close { flex: 1 1 auto; }
 @media (max-width: 900px) {
   .lp-festival__list { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 767px) {
-  .lp-festival { padding: 6rem 0; }
-}
 @media (max-width: 480px) {
-  .lp-festival__list { gap: 1rem; }
-  .lp-festival__item { padding: 1.4rem 1.4rem; border-radius: 1.2rem; gap: .4rem; }
-  .lp-festival__name { font-size: 1.6rem; }
-  .lp-festival__name span { display: block; margin-left: 0; font-size: 1.3rem; }
-  .lp-festival__work { font-size: 1.3rem; }
+  .lp-modal--festival { padding: 1.2rem; }
+  .lp-modal--festival .lp-modal__panel {
+    max-height: calc(100vh - 2.4rem);
+    max-height: calc(100dvh - 2.4rem);
+    padding: 3.2rem 1.6rem 1.6rem;
+  }
+  .lp-festival__desc { font-size: 1.35rem; margin-bottom: 1.6rem; }
+  .lp-festival__list { gap: .8rem; }
+  .lp-festival__item { padding: 1.2rem; border-radius: 1.2rem; gap: .3rem; }
+  .lp-festival__name { font-size: 1.5rem; }
+  .lp-festival__name span { display: block; margin-left: 0; font-size: 1.25rem; }
+  .lp-festival__work { font-size: 1.25rem; }
 }
